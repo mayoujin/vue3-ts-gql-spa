@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "declaration": false,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "noLib": false,
+    "strictPropertyInitialization": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "target": "es6",
+    "strict": false,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+        "./node_modules/@types",
+        "./types",
+        "./src/types"
+    ],
+    "paths": {
+      "@/*": ["src/*"],
+      "@ui/*": ["src/@ui/*"],
+      "@modules/*": ["src/@modules/*"],
+      "types/*": ["types/*"]
+    }
+  },
+  "include": [
+    "src",
+    "types"
+  ]
+}

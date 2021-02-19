@@ -1,0 +1,9 @@
+@b Menu {
+  composes: bg-test-900 from global;
+  @e MenuItem {
+    composes: px-4 from global;
+    @m selected {
+      @apply bg-test !important;
+    }
+  }
+}

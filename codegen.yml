@@ -1,0 +1,19 @@
+schema: https://rickandmortyapi.com/graphql
+overwrite: true
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+generates:
+  ./types/api/index.ts:
+    documents: ./src/@modules/**/*.graphql
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-vue-apollo
+    config:
+      withCompositionFunctions: true
+      addDocBlocks: true
+      namingConvention:
+        typeNames: pascal-case#pascalCase
+        transformUnderscore: true
+
