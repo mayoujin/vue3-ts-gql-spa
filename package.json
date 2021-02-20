@@ -6,7 +6,7 @@
     "preinstall": "npx npm-force-resolutions",
     "postinstall": "npx patch-package && npm run patch-reshadow",
     "serve": "rm -rf node_modules/.cache && vue-cli-service serve ./src/main.js",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build ./src/main.js",
     "lint": "vue-cli-service lint ./src/main.js",
     "gql-types": "graphql-codegen",
     "patch-reshadow": "mkdir ./node_modules/@reshadow/vue3 && cp ./patches/vue3/* ./node_modules/@reshadow/vue3"
