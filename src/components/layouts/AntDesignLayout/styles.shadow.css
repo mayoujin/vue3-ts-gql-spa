@@ -1,0 +1,11 @@
+Header {
+  composes: h-auto from global;
+}
+
+Layout {
+  composes: h-auto from global;
+}
+
+Menu {
+  composes: p-10 from global;
+}

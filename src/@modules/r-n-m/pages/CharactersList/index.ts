@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { setup } from './setup'
 import { RawBindings } from './types/template-bindings'
 // @ts-ignore
-import { render } from './template.vue?vue&type=template&lang=htm'
+import { render } from './template.vue?vue&type=template'
 // @ts-ignore
 import { components } from './template.vue?vue&type=script&lang=ts'
 // @ts-ignore

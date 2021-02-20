@@ -1,0 +1,71 @@
+diff --git a/node_modules/@reshadow/vue/index.js b/node_modules/@reshadow/vue/index.js
+index 1b2aedb..dbe7bfb 100644
+--- a/node_modules/@reshadow/vue/index.js
++++ b/node_modules/@reshadow/vue/index.js
+@@ -34,6 +34,7 @@ var _core = _interopRequireWildcard(require("@reshadow/core"));
+ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
+ 
+ _core.KEYS.__classProp__ = 'class';
++exports.KEYS = _core.KEYS;
+ 
+ var map = function map(element, data) {
+   if (!data.attrs) return data;
+diff --git a/node_modules/@reshadow/vue/utils.js b/node_modules/@reshadow/vue/utils.js
+new file mode 100644
+index 0000000..c90de73
+--- /dev/null
++++ b/node_modules/@reshadow/vue/utils.js
+@@ -0,0 +1,53 @@
++const { createVNode, createTextVNode, mergeProps } = require('vue')
++const jsxVuePlugin = require('@vue/babel-plugin-transform-vue-jsx')
++const identifiersToImport = [
++  'h',
++]
++
++const identifiersWhichRender = [
++  'h',
++];
++
++const __static__ = '__static__';
++
++const hasStaticAttr = ({ type, properties }) => {
++  return type === 'ObjectExpression'
++    && properties.some(({ type, key }) => {
++      return type === 'ObjectProperty'
++        && key.value === _core.KEYS.__static__;
++    })
++};
++
++const hasStaticClass = (nodeArguments) => {
++  return nodeArguments.some((item) => {
++    const { type, arguments: args } = item;
++    return type === 'NullLiteral'
++      || hasStaticAttr(item)
++      || type === 'CallExpression'
++      && args.some(hasStaticAttr)
++  });
++}
++
++const areAllAttributesStatic = (attributes) => {
++  return attributes.every((attribute) => {
++    const attr = attribute.value;
++    return (attr && attr.type === 'StringLiteral')
++      || (attr.expression && attr.expression.type === 'StringLiteral');
++  });
++}
++
++const createJSXElementVisitor = (babel) => {
++  return jsxVuePlugin(babel).visitor.JSXElement.exit;
++}
++
++exports = {
++  _createVNode: createVNode,
++  _createTextVNode: createTextVNode,
++  _mergeProps: mergeProps,
++  identifiersToImport,
++  identifiersWhichRender,
++  hasStaticClass,
++  createJSXElementVisitor,
++  areAllAttributesStatic,
++  __static__
++}

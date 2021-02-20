@@ -1,6 +1,16 @@
 import { defineComponent } from 'vue'
-import { template } from './template'
+//import { template } from './template'
+import component from './template.jsx'
+import { setup } from './setup'
 
-export default defineComponent({
-  setup: (props, context) => template(props, context),
-})
+//export default defineComponent(component)
+export default component
+
+//export default defineComponent({
+//setup: (props, context) => setup(props, context),
+//setup: (props, context) => setup(props, context),
+//render() {
+//  return template(this)
+//},
+//render: template,
+//})

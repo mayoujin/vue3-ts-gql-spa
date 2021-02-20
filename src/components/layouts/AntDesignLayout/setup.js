@@ -1,12 +1,15 @@
 import { ref } from '@vue/reactivity'
-import { useRoute } from 'vue-router'
 
 export const setup = () => {
-  const route = useRoute()
-  const selectedKeys = ref()
-  debugger
+  const title = ref('Title')
+  const subtitle = ref('')
+  const onContentMetadata = ({ subtitle: _subtitle }) => {
+    title.value = _subtitle
+  }
+
   return {
-    selectedKeys,
+    title,
+    onContentMetadata,
   }
 }
 

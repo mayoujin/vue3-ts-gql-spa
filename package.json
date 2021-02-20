@@ -4,22 +4,24 @@
   "private": true,
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
+    "postinstall": "npx patch-package && npm run patch-reshadow",
     "serve": "rm -rf node_modules/.cache && vue-cli-service serve ./src/main.js",
-    "build": "vue-cli-service build ./src/main.js",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint ./src/main.js",
-    "gql-types": "graphql-codegen"
+    "gql-types": "graphql-codegen",
+    "patch-reshadow": "mkdir ./node_modules/@reshadow/vue3 && cp ./patches/vue3/* ./node_modules/@reshadow/vue3"
   },
   "main": "./src/main.js",
   "dependencies": {
     "@apollo/client": "3.3.7",
     "@apollo/link-context": "2.0.0-beta.3",
     "@vue/apollo-composable": "4.0.0-alpha.12",
-    "ant-design-vue": "2.0.0-beta.10",
+    "ant-design-vue": "2.0.0",
     "core-js": "3.8.3",
     "graphql": "15.5.0",
     "reshadow": "0.0.1-alpha.78",
-    "vue": "3.0.0-rc.13",
-    "vue-router": "4.0.0-rc.6"
+    "vue": "3.0.5",
+    "vue-router": "4.0.4"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.20.0",
@@ -27,8 +29,7 @@
     "@graphql-codegen/typescript-operations": "1.17.13",
     "@graphql-codegen/typescript-vue-apollo": "2.3.1",
     "@typescript-eslint/eslint-plugin": "4.13.0",
-    "@vue/babel-plugin-jsx": "^1.0.3",
-    "@vue/babel-plugin-transform-vue-jsx": "1.2.1",
+    "@vue/babel-plugin-jsx": "1.0.3",
     "@vue/cli-plugin-babel": "4.5.11",
     "@vue/cli-plugin-eslint": "4.5.11",
     "@vue/cli-plugin-router": "4.5.11",

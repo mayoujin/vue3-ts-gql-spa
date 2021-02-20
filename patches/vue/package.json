@@ -1,0 +1,57 @@
+{
+  "_args": [
+    [
+      "@reshadow/vue@0.0.1-alpha.74",
+      "/Users/sfrolov/code/frontend/vue3-ts-gql-spa"
+    ]
+  ],
+  "_from": "@reshadow/vue@0.0.1-alpha.74",
+  "_id": "@reshadow/vue@0.0.1-alpha.74",
+  "_inBundle": false,
+  "_integrity": "sha512-iaIkAj5SuSRQJw/Qq+ru3+da5g7NERTJF8d2lmFN4GEd6/oXjJuZFlF/gNLPzVOobyRYbsnWhXds+SN8lpHEPQ==",
+  "_location": "/@reshadow/vue",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@reshadow/vue@0.0.1-alpha.74",
+    "name": "@reshadow/vue",
+    "escapedName": "@reshadow%2fvue",
+    "scope": "@reshadow",
+    "rawSpec": "0.0.1-alpha.74",
+    "saveSpec": null,
+    "fetchSpec": "0.0.1-alpha.74"
+  },
+  "_requiredBy": [
+    "/reshadow"
+  ],
+  "_resolved": "https://registry.npmjs.org/@reshadow/vue/-/vue-0.0.1-alpha.74.tgz",
+  "_spec": "0.0.1-alpha.74",
+  "_where": "/Users/sfrolov/code/frontend/vue3-ts-gql-spa",
+  "author": {
+    "name": "Kenzhaev Artur",
+    "email": "kenzhaev.artur@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/lttb/reshadow/issues"
+  },
+  "dependencies": {
+    "@reshadow/core": "^0.0.1-alpha.74"
+  },
+  "description": "reshadow vue",
+  "homepage": "https://reshadow.dev",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@reshadow/vue",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lttb/reshadow.git"
+  },
+  "scripts": {
+    "build": "../../build.sh"
+  },
+  "version": "0.0.1-alpha.74"
+}

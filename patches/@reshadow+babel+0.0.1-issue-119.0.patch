@@ -1,0 +1,276 @@
+diff --git a/node_modules/@reshadow/babel/index.js b/node_modules/@reshadow/babel/index.js
+index c849cca..0acf334 100644
+--- a/node_modules/@reshadow/babel/index.js
++++ b/node_modules/@reshadow/babel/index.js
+@@ -76,7 +76,7 @@ const getIsInsideComment = (isInsideComment, lastString) => {
+   /**
+    * if we were outside a comment check if comment started
+    */
+-  // there can be multiple comments in a single quasi
++    // there can be multiple comments in a single quasi
+ 
+   const lastCommentOpenning = lastString.lastIndexOf('/*');
+   const lastCommentClosing = lastString.lastIndexOf('*/');
+@@ -87,7 +87,6 @@ const PROJECT_ROOT = process.cwd();
+ 
+ module.exports = (babel, pluginOptions = {}) => {
+   const options = Object.assign({}, defaultOptions, pluginOptions);
+-  const classProp = options.classProp || KEYS.__classProp__;
+ 
+   if (options.target === 'preact') {
+     if (pluginOptions.stringStyle !== undefined) {
+@@ -97,9 +96,11 @@ module.exports = (babel, pluginOptions = {}) => {
+ 
+   let moduleName = '@reshadow/core';
+ 
+-  if (options.target === 'vue') {
+-    moduleName = '@reshadow/vue';
++  if (options.target.startsWith('vue')) {
++    moduleName = '@reshadow/'.concat(options.target);
++    KEYS.__classProp__ = require(moduleName).KEYS.__classProp__;
+   }
++  const classProp = options.classProp || KEYS.__classProp__;
+ 
+   let STYLED = new Set();
+   let IGNORE_TAGS = new Set();
+@@ -113,6 +114,7 @@ module.exports = (babel, pluginOptions = {}) => {
+   let postcss;
+   let cssFileRe = null;
+   let index;
++  let IMPORTED_COMPONENTS = new Set();
+ 
+   const hashById = id => Math.round(id * 100).toString(16);
+ 
+@@ -181,10 +183,10 @@ module.exports = (babel, pluginOptions = {}) => {
+   const getCSSVarName = index => `--${FILENAME_HASH}_${index}`;
+ 
+   const appendCode = ({
+-    quasi,
+-    name,
+-    hash
+-  }) => {
++                        quasi,
++                        name,
++                        hash
++                      }) => {
+     const {
+       expressions,
+       quasis
+@@ -193,8 +195,8 @@ module.exports = (babel, pluginOptions = {}) => {
+     const getIndex = createCSSVarIndexer();
+     let isInsideComment = false;
+     quasis.forEach(({
+-      value
+-    }, i) => {
++                      value
++                    }, i) => {
+       code += value.raw;
+       isInsideComment = getIsInsideComment(isInsideComment, value.raw);
+       const node = expressions[i];
+@@ -217,9 +219,9 @@ module.exports = (babel, pluginOptions = {}) => {
+   };
+ 
+   const prepareExpressions = ({
+-    expressions,
+-    quasis
+-  }, hash) => {
++                                expressions,
++                                quasis
++                              }, hash) => {
+     const getIndex = createCSSVarIndexer();
+ 
+     if (options.stringStyle) {
+@@ -351,10 +353,13 @@ module.exports = (babel, pluginOptions = {}) => {
+ 
+         if (elementName.startsWith('use:')) {
+           elementName = elementName.replace('use:', 'use--');
+-          openingElement.name = t.JSXIdentifier('div');
+-        } else if (utils.isCustomElement(elementName) && !(options.filterElement && options.filterElement(elementName))) {
++          openingElement.name = t.jsxIdentifier('div');
++        } else if (IMPORTED_COMPONENTS.has(elementName) === false &&
++          utils.isCustomElement(elementName) &&
++          !(options.filterElement && options.filterElement(elementName))
++        ) {
+           if (options.elementFallback) {
+-            openingElement.name = t.JSXIdentifier(typeof options.elementFallback === 'boolean' ? 'div' : options.elementFallback);
++            openingElement.name = t.jsxIdentifier(typeof options.elementFallback === 'boolean' ? 'div' : options.elementFallback);
+           }
+         } else if (!/[^A-Z]\w+/.test(elementName)) {
+           isElement = false;
+@@ -392,11 +397,14 @@ module.exports = (babel, pluginOptions = {}) => {
+               }
+ 
+               return;
+-            }
++            }/* else if (attr.argument === 'use') {
++              indexesToRemove.push(i);
++              useAttr = attr;
++            }*/
+ 
+             if (isElement && t.isJSXIdentifier(attr.name) && attr.name.name === 'as') {
+               indexesToRemove.push(i);
+-              openingElement.name.name = attr.value.value;
++              openingElement.name.name = (attr.value) ? attr.value.value : 'div';
+             } else if (t.isJSXNamespacedName(attr.name) && attr.name.namespace.name === 'use') {
+               indexesToRemove.push(i);
+               const name = attr.name.name.name;
+@@ -419,27 +427,37 @@ module.exports = (babel, pluginOptions = {}) => {
+           if (useAttr || uses.length > 0) {
+             if (!useAttr) {
+               const USE = addImport('use');
+-              useAttr = t.JSXSpreadAttribute(t.callExpression(t.identifier(USE), [t.objectExpression([])]));
++              useAttr = t.jsxSpreadAttribute(t.callExpression(t.identifier(USE), [t.objectExpression([])]));
+             }
+ 
+             useAttr.argument.arguments[0].properties.push(...uses);
+             spreads.push(useAttr.argument);
+           }
+ 
+-          if (options.target === 'vue') {
++          if (options.target.startsWith('vue')) {
+             indexesToRemove.forEach(i => {
+               openingElement.attributes.splice(i, 1);
+             });
+ 
+             if (__style__) {
+-              openingElement.attributes.push(t.jSXAttribute(t.JSXIdentifier(KEYS.__style__), t.JSXExpressionContainer(__style__)));
++              openingElement.attributes.push(t.jsxAttribute(t.jsxIdentifier(KEYS.__style__), t.jsxExpressionContainer(__style__)));
+             }
+ 
+             if (useAttr) {
+               openingElement.attributes.push(useAttr);
++              return
+             }
+ 
+-            return;
++            if (!require(moduleName).areAllAttributesStatic(openingElement.attributes)) {
++                return
++            }
++
++            filtered.push(
++              ...spreads.map((attr) => {
++                return t.JSXSpreadAttribute(attr)
++              })
++            );
++            spreads.length = 0;
+           }
+         }
+ 
+@@ -452,20 +470,28 @@ module.exports = (babel, pluginOptions = {}) => {
+             }
+           }
+ 
+-          openingElement.attributes = [t.JSXSpreadAttribute(t.callExpression(t.identifier(addImport('map')), [t.stringLiteral(elementName), ...spreads]))];
++          openingElement.attributes = [t.jsxSpreadAttribute(t.callExpression(t.identifier(addImport('map')), [t.stringLiteral(elementName), ...spreads]))];
+         } else {
+-          openingElement.attributes = [t.JSXAttribute(t.JSXIdentifier(classProp), t.JSXExpressionContainer(buildClassName({
++          openingElement.attributes = [t.jsxAttribute(t.jsxIdentifier(classProp), t.jsxExpressionContainer(buildClassName({
+             NAME: name,
+             ELEMENT: t.stringLiteral(`__${elementName}`)
+           })))];
+ 
+           if (__style__) {
+-            openingElement.attributes.push(t.jSXAttribute(t.JSXIdentifier('style'), t.JSXExpressionContainer(__style__)));
++            openingElement.attributes.push(t.jsxAttribute(t.jsxIdentifier('style'), t.jsxExpressionContainer(__style__)));
+           }
+         }
+ 
+         openingElement.attributes.push(...filtered);
+ 
++        if (options.target.startsWith('vue')) {
++          openingElement.attributes.push(
++            t.JSXAttribute(
++              t.JSXIdentifier('__static__')
++            )
++          );
++        }
++
+         if (closingElement) {
+           closingElement.name = openingElement.name;
+         }
+@@ -476,33 +502,49 @@ module.exports = (babel, pluginOptions = {}) => {
+      * Think about more effective transformations
+      */
+ 
+-    if (options.target === 'vue') {
+-      const transformVueJSX = require('@vue/babel-plugin-transform-vue-jsx')(babel);
++    if (options.target.startsWith('vue')) {
++      const {
++        createJSXElementVisitor,
++        hasStaticClass,
++        identifiersToImport,
++        identifiersWhichRender
++      } = require(moduleName.concat('/utils'))
++
++      const JSXElementVisitor = createJSXElementVisitor(babel);
+ 
+       const elems = [...elementMap.values()];
+       p.traverse({
+         JSXElement(elementPath) {
+-          transformVueJSX.visitor.JSXElement(elementPath);
++          JSXElementVisitor(elementPath);
+         },
+ 
+         CallExpression(expressionPath) {
+-          const {
+-            node
+-          } = expressionPath;
++          const { node } = expressionPath
+ 
+-          if (!(t.isIdentifier(node.callee) && node.callee.name === 'h')) {
++          if (t.isIdentifier(node.callee)
++            && identifiersToImport.includes(node.callee.name)) {
++            addImport(node.callee.name)
++          }
++
++          if (t.isIdentifier(node.callee)
++            && identifiersWhichRender.includes(node.callee.name) === false) {
++            return
++          }
++
++          const { elementName } = elems.shift()
++
++          if (hasStaticClass(node.arguments)) {
+             return;
+           }
+ 
+-          const {
+-            elementName
+-          } = elems.shift();
+-          node.arguments[1] = t.callExpression(t.identifier(addImport('map')), [t.stringLiteral(elementName), node.arguments[1]]);
++          node.arguments[1] = t.callExpression(t.identifier(addImport('map')), [
++            t.stringLiteral(elementName),
++            node.arguments[1],
++          ])
++        },
++      })
+         }
+-
+-      });
+     }
+-  };
+ 
+   const traverseTaggedTemplate = p => {
+     const {
+@@ -650,13 +692,20 @@ module.exports = (babel, pluginOptions = {}) => {
+           specifiers
+         } = p.node;
+ 
++        p.node.specifiers.forEach(specifier => {
++          const { name } = specifier.local
++          if (/^[A-Z]/.test(name)) {
++            IMPORTED_COMPONENTS.add(name)
++          }
++        })
++
+         if (cssFileRe && cssFileRe.test(source.value)) {
+           const file = utils.resolveDependency({
+             filename: source.value,
+             basedir: path.dirname(filename)
+           });
+           const code = fs.readFileSync(file).toString() // escape backticks and backslashes
+-          .replace(/[`\\]/g, '\\$&');
++            .replace(/[`\\]/g, '\\$&');
+           const append = t.taggedTemplateExpression(t.identifier(addImport('css')), t.templateLiteral([t.templateElement({
+             raw: code,
+             cooked: code

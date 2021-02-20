@@ -61,4 +61,4 @@ export default {
 }
 </script>
 
-<style src="./styles.pcss" lang="postcss" module></style>
+<style src="./styles.module" lang="postcss" module></style>

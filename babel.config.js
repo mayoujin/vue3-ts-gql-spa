@@ -17,12 +17,8 @@ module.exports = {
       'reshadow/babel',
       {
         postcss: true,
-        target: 'vue:3',
+        target: 'vue3',
         files: /\.shadow\.p?css$/,
-        classProp: 'class',
-        filterProp: (prop) => {
-          return [].includes(prop)
-        },
       },
     ],
   ],

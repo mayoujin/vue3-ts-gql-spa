@@ -1,37 +1,37 @@
+/**
+ * Global JS Libs, Vue Utils, Helpers, Plugins
+ */
 import { ref } from '@vue/reactivity'
 import { useRoute } from 'vue-router'
-
-import styles from './styles.module'
-
-import { Menu } from 'ant-design-vue'
-import { RouterLink } from 'vue-router'
-
 import { useBemClassnameBindings } from '@/plugins/bem'
 
-import { ROUTES as COMMON_ROUTES } from '@modules/common/routes'
-import { ROUTES as RNM_ROUTES } from '@modules/r-n-m/routes'
+/**
+ * Global UI
+ */
+import { RouterLink } from 'vue-router'
+import { Menu } from 'ant-design-vue'
 
+/**
+ * Component-level stuff
+ */
+import { MenuItemsList } from './config'
+import styles from './styles.module'
+
+/**
+ * Service and helpers builds, inits
+ */
 const { Item: MenuItem } = Menu
-
 const cn = useBemClassnameBindings(styles)
 
-const MenuItemsList = [
-  {
-    title: 'About',
-    route: COMMON_ROUTES.ABOUT,
-  },
-  {
-    title: 'Home',
-    route: COMMON_ROUTES.HOME,
-  },
-  {
-    title: 'Rick&Morty',
-    route: RNM_ROUTES.ROOT_ROUTE,
-  },
-]
-
+/**
+ *
+ * @param title
+ * @param route
+ * @param selectedKeys
+ * @return {JSX.Element}
+ * @constructor
+ */
 const Item = ({ title, route }, selectedKeys) => {
-  debugger
   return (
     <MenuItem
       key={route.name}
@@ -45,7 +45,7 @@ const Item = ({ title, route }, selectedKeys) => {
 export default () => {
   const route = useRoute()
   const selectedKeys = ref([route.matched[1].name])
-  debugger
+
   return (
     <Menu
       mode="horizontal"

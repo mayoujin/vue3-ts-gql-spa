@@ -1,0 +1,29 @@
+{
+    "name": "@reshadow/vue3",
+    "version": "0.0.1-alpha.74",
+    "description": "reshadow vue",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lttb/reshadow.git"
+    },
+    "author": "Kenzhaev Artur <kenzhaev.artur@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/lttb/reshadow/issues"
+    },
+    "homepage": "https://reshadow.dev",
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "../../build.sh"
+    },
+    "dependencies": {
+        "@reshadow/core": "^0.0.1-alpha.74"
+    }
+
+,"_resolved": "https://registry.npmjs.org/@reshadow/vue/-/vue-0.0.1-alpha.74.tgz"
+,"_integrity": "sha512-iaIkAj5SuSRQJw/Qq+ru3+da5g7NERTJF8d2lmFN4GEd6/oXjJuZFlF/gNLPzVOobyRYbsnWhXds+SN8lpHEPQ=="
+,"_from": "@reshadow/vue@0.0.1-alpha.74"
+}
