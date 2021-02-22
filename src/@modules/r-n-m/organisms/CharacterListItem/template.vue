@@ -12,10 +12,12 @@
 </template>
 
 <script lang="ts">
-import { PropType } from 'vue'
-import { ComponentProps } from '@modules/r-n-m/organisms/CharacterListItem/props'
+import { PropType, defineProps } from 'vue'
+import { ComponentPropsOptions } from '@vue/runtime-core'
 
-const props: ComponentProps = {
+import { Character } from '@modules/r-n-m/entities/types'
+
+const props = {
   name: String,
   species: String,
   image: String,
@@ -24,6 +26,8 @@ const props: ComponentProps = {
   },
   type: String,
 }
+
+defineProps<Character>(props)
 
 export default {
   props,

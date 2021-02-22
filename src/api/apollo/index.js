@@ -1,8 +1,9 @@
-//import { pipe, identity } from 'ramda'
 import { DefaultApolloClient } from '@vue/apollo-composable'
-import { client as defaultClient } from './client'
-export { defaultClient as client }
+import { client } from './client'
 
-export const setup = (app) => {
-  app.provide(DefaultApolloClient, defaultClient)
+export { client } from './client'
+export { connectLink } from './links'
+
+export const install = ({ app }) => {
+  app.provide(DefaultApolloClient, client)
 }

@@ -12,5 +12,9 @@ export const ROUTES = {
 /**
  * Routes list, to import in global routes list config
  */
-export const routes = [ROUTE_ABOUT, ROUTE_HOME, ROUTE_TEST_RESHADOW];
+export const routes = [
+    ROUTE_ABOUT,
+    ROUTE_HOME,
+    ROUTE_TEST_RESHADOW,
+];
 //# sourceMappingURL=routes.js.map

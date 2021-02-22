@@ -5,4 +5,4 @@ module.exports.configureWebpack = {
   },
 }
 
-module.exports.chainWebpack = require('./webpackChain')
+module.exports.chainWebpack = require('./chainWebpack')

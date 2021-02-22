@@ -11,8 +11,9 @@ module.exports = {
     // `plugin:vue/essential` by default, consider switching to `plugin:vue/strongly-recommended`
     //  or `plugin:vue/recommended` for stricter rules.
     // See https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
+    '@vue/eslint-config-typescript',
     'plugin:vue/vue3-recommended',
-    '@vue/prettier',
+    // '@vue/prettier', includes in '@vue/eslint-config-typescript/recommended',
     // 'prettier/vue',
     // 'reshadow/eslint',
   ],
@@ -40,6 +41,7 @@ module.exports = {
 
   // add your custom rules here
   rules: {
+    '@typescript-eslint/strict-boolean-expressions': 'off',
     'comma-dangle': ['error', 'always-multiline'],
     // allow console.log during development only
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -102,4 +104,10 @@ module.exports = {
   //     },
   //   },
   // ],
-};
+  globals: {
+    defineComponent: true,
+    defineProps: true,
+    defineBindings: true,
+    defineEmits: true,
+  },
+}

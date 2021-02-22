@@ -19,6 +19,10 @@ module.exports = {
         postcss: true,
         target: 'vue3',
         files: /\.shadow\.p?css$/,
+        classProp: 'class',
+        filterProp: (prop) => {
+          return ['class', 'id', 'aria', 'for', 'role'].includes(prop)
+        },
       },
     ],
   ],

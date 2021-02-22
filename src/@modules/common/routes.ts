@@ -1,3 +1,5 @@
+import { RouteRecordRaw } from 'vue-router'
+
 import { ROUTE as ROUTE_HOME } from '@modules/common/pages/Home/routes'
 import { ROUTE as ROUTE_ABOUT } from '@modules/common/pages/About/routes'
 import { ROUTE as ROUTE_TEST_RESHADOW } from '@modules/common/pages/TestReshadow/routes'
@@ -14,4 +16,8 @@ export const ROUTES = {
 /**
  * Routes list, to import in global routes list config
  */
-export const routes = [ROUTE_ABOUT, ROUTE_HOME, ROUTE_TEST_RESHADOW]
+export const routes: RouteRecordRaw[] = [
+  ROUTE_ABOUT,
+  ROUTE_HOME,
+  ROUTE_TEST_RESHADOW,
+]

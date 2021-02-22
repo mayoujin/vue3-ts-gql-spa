@@ -1,17 +1,26 @@
-import { useQuery, useResult } from '@vue/apollo-composable';
-import CharactersDocument from './queries/CharactersList.query.graphql';
+import { useQuery, useResult } from '@vue/apollo-composable'
+import CharactersDocument from './queries/CharactersList.query.graphql'
+
 export const useFetchData = () => {
-    const { result, loading } = useQuery(CharactersDocument);
-    const characters = useResult(result, [], ({ characters: { results } }) => results);
-    return {
-        loading,
-        characters,
-    };
-};
+  const { result, loading } = useQuery(CharactersDocument)
+  const characters = useResult(
+    result,
+    [],
+    ({ characters: { results } }) => results,
+  )
+  return {
+    loading,
+    characters,
+  }
+}
+
 export const setup = () => {
-    return useFetchData();
-};
+  const data = useFetchData()
+
+  return data
+}
+
 export default {
-    setup,
-};
+  setup,
+}
 //# sourceMappingURL=setup.js.map

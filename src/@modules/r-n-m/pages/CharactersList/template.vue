@@ -1,16 +1,15 @@
 <template>
-  <AList bem:b item-layout="horizontal" :data-source="characters">
-    <template v-slot:renderItem="{ item, index }">
-      <ListItem v-bind="item" />
-    </template>
-  </AList>
-  <Button type="primary">Test</Button>
+  <CharactersList
+    :isLoading="isLoading"
+    :characters="characters"
+  ></CharactersList>
+  {{ characters }}
 </template>
 
 <script lang="ts">
-import ListItem from '@modules/r-n-m/organisms/CharacterListItem'
+import CharactersList from '../../organisms/CharactersList'
 
 export const components = {
-  ListItem,
+  CharactersList,
 }
 </script>

@@ -13,9 +13,10 @@ export default {
 
     return () =>
       styled(styles)(
-        <component>
-          <blue>Text should be blue</blue>
-          <green>Text should be green</green>
+        <component role="menu">
+          <blue rel="some">Text should be blue</blue>
+          <green class="my-class">Text should be green</green>
+          <input type="text" />
           <About />
         </component>,
       )

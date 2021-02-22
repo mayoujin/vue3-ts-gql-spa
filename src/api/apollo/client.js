@@ -10,5 +10,6 @@ export const client = new ApolloClient({
   //link: getEnv('API_GRAPHQL_MOCK') ? mockLink : links,
   link,
   cache,
+  connectToDevTools: true,
   //resolvers,
 })
