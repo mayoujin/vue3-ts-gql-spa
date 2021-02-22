@@ -1,0 +1,27 @@
+diff --git a/node_modules/dedupe-npm-install/dedupe-npm-install.js b/node_modules/dedupe-npm-install/dedupe-npm-install.js
+index f250065..14f396a 100644
+--- a/node_modules/dedupe-npm-install/dedupe-npm-install.js
++++ b/node_modules/dedupe-npm-install/dedupe-npm-install.js
+@@ -27,12 +27,16 @@ function getAllPackages(tree) {
+   let packages = []
+ 
+   if (tree.name === 'package.json') {
+-    const package = JSON.parse(tree.content)
+-    packages.push({
+-      v: package.version,
+-      name: package.name,
+-      path: tree.path,
+-    })
++    try {
++      const package = JSON.parse(tree.content)
++      packages.push({
++        v: package.version,
++        name: package.name,
++        path: tree.path,
++      })
++    } catch (e) {
++      console.log(e.message)
++    }
+   }
+ 
+   if (tree.children) {

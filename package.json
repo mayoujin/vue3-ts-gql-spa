@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
-    "postinstall": "npx patch-package && npm run patch-reshadow",
+    "postinstall": "npx dedupe-npm-install && npx patch-package && npm run patch-reshadow",
     "serve": "rm -rf node_modules/.cache && vue-cli-service serve ./src/index.ts",
     "build": "vue-cli-service build ./src/index.ts",
     "lint": "vue-cli-service lint ./src/index.ts",
