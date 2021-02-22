@@ -47,7 +47,7 @@ const ruleEslintDisable = (config) => {
  * @type ChainWebpackFunction[]
  */
 const configChainFnLis = [
-  //pluginsDeleteOptimizeCss,
+  pluginsDeleteOptimizeCss,
   ruleGqlTagLoader,
   ruleEslintDisable,
   rulePosthtmlLoader,
