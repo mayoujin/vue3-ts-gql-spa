@@ -1,9 +1,6 @@
-import { RouteRecordRaw } from 'vue-router'
-
 import Layout from '@/@app/components/layouts/AntDesignLayout'
 import { RouterView } from 'vue-router'
-
-export const routes: RouteRecordRaw[] = [
+export const routes = [
   {
     path: '/',
     name: 'layout',
@@ -17,3 +14,4 @@ export const routes: RouteRecordRaw[] = [
     redirect: 'home',
   },
 ]
+//# sourceMappingURL=routes.jsx.map

@@ -1,5 +1,5 @@
 diff --git a/node_modules/@reshadow/babel/index.js b/node_modules/@reshadow/babel/index.js
-index c849cca..0acf334 100644
+index c849cca..1693dd3 100644
 --- a/node_modules/@reshadow/babel/index.js
 +++ b/node_modules/@reshadow/babel/index.js
 @@ -76,7 +76,7 @@ const getIsInsideComment = (isInsideComment, lastString) => {
@@ -114,7 +114,7 @@ index c849cca..0acf334 100644
              } else if (t.isJSXNamespacedName(attr.name) && attr.name.namespace.name === 'use') {
                indexesToRemove.push(i);
                const name = attr.name.name.name;
-@@ -419,27 +427,37 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -419,27 +427,33 @@ module.exports = (babel, pluginOptions = {}) => {
            if (useAttr || uses.length > 0) {
              if (!useAttr) {
                const USE = addImport('use');
@@ -143,10 +143,6 @@ index c849cca..0acf334 100644
              }
  
 -            return;
-+            if (!require(moduleName).areAllAttributesStatic(openingElement.attributes)) {
-+                return
-+            }
-+
 +            filtered.push(
 +              ...spreads.map((attr) => {
 +                return t.JSXSpreadAttribute(attr)
@@ -156,7 +152,7 @@ index c849cca..0acf334 100644
            }
          }
  
-@@ -452,20 +470,28 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -452,20 +466,28 @@ module.exports = (babel, pluginOptions = {}) => {
              }
            }
  
@@ -188,7 +184,7 @@ index c849cca..0acf334 100644
          if (closingElement) {
            closingElement.name = openingElement.name;
          }
-@@ -476,33 +502,49 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -476,33 +498,49 @@ module.exports = (babel, pluginOptions = {}) => {
       * Think about more effective transformations
       */
  
@@ -216,8 +212,7 @@ index c849cca..0acf334 100644
 -            node
 -          } = expressionPath;
 +          const { node } = expressionPath
- 
--          if (!(t.isIdentifier(node.callee) && node.callee.name === 'h')) {
++
 +          if (t.isIdentifier(node.callee)
 +            && identifiersToImport.includes(node.callee.name)) {
 +            addImport(node.callee.name)
@@ -227,7 +222,8 @@ index c849cca..0acf334 100644
 +            && identifiersWhichRender.includes(node.callee.name) === false) {
 +            return
 +          }
-+
+ 
+-          if (!(t.isIdentifier(node.callee) && node.callee.name === 'h')) {
 +          const { elementName } = elems.shift()
 +
 +          if (hasStaticClass(node.arguments)) {
@@ -252,7 +248,7 @@ index c849cca..0acf334 100644
  
    const traverseTaggedTemplate = p => {
      const {
-@@ -650,13 +692,20 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -650,13 +688,20 @@ module.exports = (babel, pluginOptions = {}) => {
            specifiers
          } = p.node;
  
