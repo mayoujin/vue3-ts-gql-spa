@@ -1,4 +1,5 @@
 const { configureWebpack, chainWebpack } = require('./.webpack')
+
 module.exports = {
   configureWebpack,
   chainWebpack,
@@ -15,4 +16,5 @@ module.exports = {
       },
     },
   },
+  publicPath: process.env.npm_config_publicPath || '/',
 }
