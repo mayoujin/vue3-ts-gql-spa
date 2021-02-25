@@ -9,7 +9,7 @@ export const removeClientMutation = (fns) => {
 }
 
 export default new Proxy(Object.create(null), {
-  get(target, prop) {
+  get (target, prop) {
     return mutations.has(prop) ? mutations.get(prop) : () => null
   },
 })

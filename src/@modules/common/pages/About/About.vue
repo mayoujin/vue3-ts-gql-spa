@@ -52,12 +52,12 @@ export default {
   components: {
     Teleport,
   },
+  setup () {},
   computed: {
-    isModified() {
+    isModified () {
       return true
     },
   },
-  setup() {},
 }
 </script>
 

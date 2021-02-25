@@ -35,7 +35,7 @@ export default {
     provide(BemCssModuleCn, block)
 
     app.mixin({
-      beforeCreate() {
+      beforeCreate () {
         const $style = this.$style || this.$options.$style
         if ($style) {
           this.cn = this.$bem($style)

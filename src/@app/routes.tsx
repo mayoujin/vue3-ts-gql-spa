@@ -14,4 +14,4 @@ export const routes = [
     redirect: 'home',
   },
 ]
-//# sourceMappingURL=routes.jsx.map
+// # sourceMappingURL=routes.jsx.map

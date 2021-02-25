@@ -18,4 +18,3 @@ export const MenuItemsList = [
         route: RNM_ROUTES.ROOT_ROUTE,
     },
 ];
-//# sourceMappingURL=config.js.map

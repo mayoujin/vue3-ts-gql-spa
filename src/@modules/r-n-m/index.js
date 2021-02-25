@@ -6,4 +6,3 @@ export const register = ({ router, store }) => {
     });
     registerEntities(store);
 };
-//# sourceMappingURL=index.js.map

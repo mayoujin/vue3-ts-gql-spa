@@ -1,13 +1,18 @@
-import { ApolloLink } from '@apollo/client'
-import stateLink from './link'
+import { TypePolicies } from '@apollo/client'
+// import { extendCacheTypePoliciesEventHook } from '@/store/apollo/cache'
 
+// export { useStoreVariable, extendCacheTypePoliciesEventHook } from './cache'
 export { useStoreVariable } from './cache'
 
 export const install = ({
-  connectApolloLink,
+  extendTypePolicies,
 }: {
-  connectApolloLink: (link: typeof ApolloLink) => void
+  extendTypePolicies: (typePolicies: TypePolicies) => void
 }) => {
-  // @ts-ignore
-  connectApolloLink(stateLink)
+  /*
+  debugger
+  extendCacheTypePoliciesEventHook.on((typePolicies) => {
+    extendTypePolicies(typePolicies)
+  })
+*/
 }

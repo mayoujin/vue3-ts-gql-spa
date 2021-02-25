@@ -1,10 +1,10 @@
 import { ref } from '@vue/reactivity'
 import { Transition } from '@vue/runtime-dom'
-//import styled, { use, css } from 'reshadow'
-//import styles from './styles.shadow.css'
+// import styled, { use, css } from 'reshadow'
+// import styles from './styles.shadow.css'
 import { useBemClassnameBindings } from '@/plugins/bem'
 
-import { Layout /*, Breadcrumb*/ } from 'ant-design-vue'
+import { Layout /*, Breadcrumb */ } from 'ant-design-vue'
 import { AppHeader as Header } from '@ui/organisms'
 import { HeaderNavMenu as NavMenu } from '@/@app/components/HeaderNavMenu'
 import styles from './styles.module'

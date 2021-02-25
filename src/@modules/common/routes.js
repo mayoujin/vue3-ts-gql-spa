@@ -17,4 +17,3 @@ export const routes = [
     ROUTE_HOME,
     ROUTE_TEST_RESHADOW,
 ];
-//# sourceMappingURL=routes.js.map

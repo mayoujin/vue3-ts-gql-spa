@@ -2,20 +2,19 @@
  * Global JS Libs, Vue Utils, Helpers, Plugins
  */
 import { ref } from '@vue/reactivity'
-import { useRoute } from 'vue-router'
+import { useRoute, RouterLink } from 'vue-router'
 import { useBemClassnameBindings } from '@/plugins/bem'
 
 /**
  * Global UI
  */
-import { RouterLink } from 'vue-router'
 import { Menu } from 'ant-design-vue'
 
 /**
  * Component-level stuff
  */
 import { MenuItemsList } from './config'
-import styles from './styles.module'
+import styles from './styles.module.pcss'
 
 /**
  * Service and helpers builds, inits

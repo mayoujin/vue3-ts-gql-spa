@@ -1,9 +1,9 @@
 /* Apollo options configuration */
 import { ApolloLink, from as fromArray } from '@apollo/client'
 
-//import authLink from './auth'
+// import authLink from './auth'
 import httpLink from './http'
-//import mutationLink from './watched-mutation'
+// import mutationLink from './watched-mutation'
 
 const links: ApolloLink[] = [httpLink]
 
@@ -16,6 +16,6 @@ export const connectLink = (link: ApolloLink) => {
 }
 
 export default fromArray([
-  //authLink,
+  // authLink,
   httpLink,
 ])

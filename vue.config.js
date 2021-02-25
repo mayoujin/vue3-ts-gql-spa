@@ -1,6 +1,7 @@
 const { configureWebpack, chainWebpack } = require('./.webpack')
 
 module.exports = {
+  lintOnSave: false,
   configureWebpack,
   chainWebpack,
   css: {

@@ -8,4 +8,3 @@ export const useEmitMetadata = (metadata, context) => {
         emit(Events.METADATA_EMITTED, Object.assign({ __timestamp: Date.now() }, metadata));
     });
 };
-//# sourceMappingURL=index.js.map

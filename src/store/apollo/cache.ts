@@ -1,6 +1,10 @@
+import { useEventHook } from '@vue/apollo-composable/dist/util/useEventHook'
 import { ReactiveVar } from '@apollo/client/cache/inmemory/reactiveVars'
-import { makeVar, TypePolicies, TypePolicy } from '@apollo/client'
-import { typePolicies as typePoliciesStore } from './typePolicies'
+import { makeVar, TypePolicies } from '@apollo/client'
+import { typePolicies } from '@/api/apollo'
+
+// export const extendCacheTypePoliciesEventHook = useEventHook()
+// export const typePoliciesExtenders = new Set()
 
 export const useStoreVariable = <T>({
   extendTypePolicies,
@@ -13,13 +17,7 @@ export const useStoreVariable = <T>({
   initialValue: T
 }) => {
   const variable = makeVar<T>(initialValue)
-  extendTypePolicies(typePoliciesStore, variable)
+  extendTypePolicies(typePolicies, variable)
 
   return variable
-}
-
-export const extendTypePolicies = (
-  callback: (typePolicies: TypePolicies) => void,
-) => {
-  callback(typePoliciesStore)
 }

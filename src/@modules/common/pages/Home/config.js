@@ -5,4 +5,3 @@ export const metadata = {
         subtitle: 'О проекте',
     },
 };
-//# sourceMappingURL=config.js.map

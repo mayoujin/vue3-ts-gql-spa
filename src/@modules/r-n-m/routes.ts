@@ -1,17 +1,21 @@
 import { RouteRecordRaw } from 'vue-router'
 
-const RootLayout = () =>
-  import(/* webpackChunkName: "RootLayout"  */ './layouts/base')
-const CharactersList = () =>
-  import(/* webpackChunkName: "CharactersList"  */ './pages/CharactersList')
+const RootLayout = async () =>
+  await import(
+    /* webpackChunkName: "RootLayout"  */ './components/layouts/base'
+  )
+const CharactersList = async () =>
+  await import(
+    /* webpackChunkName: "CharactersList"  */ './pages/CharactersList'
+  )
 
-const ROOT_ROUTE = {
+const ROOT_ROUTE: RouteRecordRaw = {
   path: '/rick-and-morty',
   name: 'rick-and-morty',
   component: RootLayout,
 }
 
-const CHARACTERS_LIST_ROUTE = {
+const CHARACTERS_LIST_ROUTE: RouteRecordRaw = {
   path: 'characters-list',
   name: 'characters-list',
   component: CharactersList,

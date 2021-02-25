@@ -6,7 +6,7 @@ import { ROUTES as RNM_ROUTES } from '@modules/r-n-m/routes'
  *
  * @type {({route: {path: string, component: () => Promise<any>, name: string}, title: string}|{route: {path: string, component: () => Promise<any>, name: string}, title: string}|{route: {path: string, component: () => Promise<any>, name: string}, title: string}|{route: {path: string, component: function(): Promise<{readonly default?: function(): *}>, name: string}, title: string})[]}
  */
-type MenuItemParams = {
+interface MenuItemParams {
   title: string
   route: RouteRecord
 }

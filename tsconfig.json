@@ -9,7 +9,7 @@
     "strictPropertyInitialization": false,
     "suppressImplicitAnyIndexErrors": true,
     "allowJs": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "target": "es6",
     "strict": false,
     "experimentalDecorators": true,
@@ -18,15 +18,27 @@
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "typeRoots": [
-        "./node_modules/@types",
-        "./types",
-        "./src/types"
+      "./node_modules/@types",
+      "./types",
+      "./src/types"
     ],
     "paths": {
-      "@/*": ["src/*"],
-      "@ui/*": ["src/@ui/*"],
-      "@modules/*": ["src/@modules/*"],
-      "types/*": ["types/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@ui/*": [
+        "src/@ui/*"
+      ],
+      "@modules/*": [
+        "src/@modules/*"
+      ],
+      "types/*": [
+        "types/*"
+      ],
+      "tests/*": [
+        "tests/*"
+      ],
+      "@vue/apollo-composable/*": ["@vue/apollo-composable/dist/*"]
     }
   },
   "include": [

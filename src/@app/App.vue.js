@@ -1,2 +1,2 @@
-"use strict";
-//# sourceMappingURL=App.vue.js.map
+'use strict'
+// # sourceMappingURL=App.vue.js.map

@@ -8,7 +8,7 @@ import { metadata } from './config'
 import styles from './styles.shadow.pcss'
 
 export default {
-  setup(props, context) {
+  setup (props, context) {
     useEmitMetadata(metadata, context)
 
     return () =>

@@ -8,7 +8,7 @@ const createAddClassList = (el) => (classListString) => {
 
 export const apply = (app) => {
   app.directive(DIRECTIVE_NAME, {
-    beforeMount(el, binding) {
+    beforeMount (el, binding) {
       const {
         instance: { $style },
         arg: tagMatcher,

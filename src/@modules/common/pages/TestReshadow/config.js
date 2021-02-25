@@ -5,4 +5,3 @@ export const metadata = {
         subtitle: 'Как работают стили',
     },
 };
-//# sourceMappingURL=config.js.map

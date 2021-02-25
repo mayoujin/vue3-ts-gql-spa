@@ -42,6 +42,8 @@ module.exports = {
   // add your custom rules here
   rules: {
     '@typescript-eslint/strict-boolean-expressions': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/prefer-ts-expect-error': 'off',
     'comma-dangle': ['error', 'always-multiline'],
     // allow console.log during development only
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -62,16 +64,16 @@ module.exports = {
     // See https://github.com/typescript-eslint/typescript-eslint/issues/493
     '@typescript-eslint/explicit-function-return-type': 'off',
 
-    'vue/max-attributes-per-line': [
-      'error',
-      {
-        singleline: 1,
-        multiline: {
-          max: 3,
-          allowFirstLine: true,
-        },
-      },
-    ],
+    //'vue/max-attributes-per-line': [
+    //  'error',
+    //  {
+    //    singleline: 1,
+    //    multiline: {
+    //      max: 3,
+    //      allowFirstLine: true,
+    //    },
+    //  },
+    //],
     // https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/component-name-in-template-casing.md
     'vue/html-indent': [
       'warn',
@@ -96,6 +98,7 @@ module.exports = {
     // Correct typescript linting until at least 2.0.0 major release
     // 'reshadow/eslint/as': 2,
   },
+
   // overrides: [
   //   {
   //     files: ['*.vue'],
@@ -110,4 +113,16 @@ module.exports = {
     defineBindings: true,
     defineEmits: true,
   },
+
+  overrides: [
+    {
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)',
+      ],
+      env: {
+        jest: true,
+      },
+    },
+  ],
 }

@@ -1,4 +1,4 @@
-const component = () => import(/* webpackChunkName: "Home" */ '.')
+const component = async () => await import(/* webpackChunkName: "Home" */ '.')
 
 export const ROUTE = {
   path: '/home',

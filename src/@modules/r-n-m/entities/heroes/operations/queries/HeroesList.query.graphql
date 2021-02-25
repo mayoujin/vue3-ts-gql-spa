@@ -1,0 +1,13 @@
+query GetHeroes {
+  heroes @client {
+    id
+    name
+    species
+    type
+    image
+    location {
+      name
+    }
+  }
+}
+
