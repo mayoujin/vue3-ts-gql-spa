@@ -6,7 +6,11 @@ import { bootBeforeCreated, afterCreated } from '@/.boot'
 import router from '@/router'
 import * as store from '@/store'
 import * as apollo from '@/api/apollo'
-import { client as apolloClient } from '@/api/apollo/client'
+// import { client as apolloClient } from '@/api/apollo/client'
+import { createMockClient } from '../tests/mocks'
+import { requests } from '../tests/unit/@modules/r-n-m/stubs'
+
+const apolloClient = createMockClient({}, { requests })
 
 export interface ModuleRegisterParams {
   app?: ReturnType<typeof createApp>

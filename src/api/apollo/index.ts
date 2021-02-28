@@ -1,7 +1,5 @@
-import {
-  DefaultApolloClient,
-  provideApolloClient,
-} from '@vue/apollo-composable/dist'
+import { DefaultApolloClient, provideApolloClient } from '@api/index'
+
 import { ModuleRegisterParams } from '@/index'
 
 export { extendTypePolicies } from './cache'

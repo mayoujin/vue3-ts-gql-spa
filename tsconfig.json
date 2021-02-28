@@ -10,17 +10,18 @@
     "suppressImplicitAnyIndexErrors": true,
     "allowJs": true,
     "sourceMap": false,
-    "target": "es6",
+    "target": "esnext",
     "strict": false,
     "experimentalDecorators": true,
     "module": "esnext",
+    "noEmit": true,
     "moduleResolution": "node",
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "typeRoots": [
-      "./node_modules/@types",
-      "./types",
-      "./src/types"
+      "node_modules/@types",
+      "types",
+      "src/types",
     ],
     "paths": {
       "@/*": [
@@ -28,6 +29,9 @@
       ],
       "@ui/*": [
         "src/@ui/*"
+      ],
+      "@api/*": [
+        "src/api/*"
       ],
       "@modules/*": [
         "src/@modules/*"
@@ -37,12 +41,21 @@
       ],
       "tests/*": [
         "tests/*"
-      ],
-      "@vue/apollo-composable/*": ["@vue/apollo-composable/dist/*"]
+      ]
     }
   },
   "include": [
-    "src",
-    "types"
+    "src/**/*",
+    "types/**/*",
+    "tests/**/*"
+  ],
+  "plugins": [
+    {
+      "name": "typescript-plugin-css-modules",
+      "options": {
+        "classnameTransform": "dashes",
+        "customMatcher": "\\.m\\.p?css$"
+      }
+    }
   ]
 }

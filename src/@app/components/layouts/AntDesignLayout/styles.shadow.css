@@ -1,11 +1,15 @@
-Header {
-  composes: h-auto from global;
-}
-
 Layout {
-  composes: h-auto from global;
+  composes: min-h-screen from global;
 }
-
-Menu {
-  composes: p-10 from global;
+Content {
+  composes: px-4 from global;
+}
+Footer {
+  composes: bg-primary-400 from global;
+}
+NavMenu {
+  composes: bg-primary-900 from global;
+}
+PageHeader {
+  composes: bg-primary-300 from global;
 }

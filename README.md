@@ -32,26 +32,34 @@
 ├── src
 │   ├── .boot               # - vue app instance, plugins configure and boot scripts
 │   ├── @app                # - app core components and logic folder
-│   │   └── components      # - app components
-│   │       ├── menus
-│   │       ├── layouts
-│   │       └── routes.ts   # – app basic routes config
+│   │   ├── components      # - app components
+│   │   │    ├── menus
+│   │   │    ├── layouts
+│   │   │    └── routes.ts   # – app basic routes config
+|   |   └── pages
 │   ├── @modules            # – modules folder
 │   │   ├── common          # – common app pages and widgets folder (About, Home, Contacts etc.)
 │   │   │    ├── components
 │   │   │    |── pages
 │   │   │    └── routes.ts  # – common routes config
 │   │   └── r-n-m
+│   │       ├── api
 │   │       ├── components
-│   │       ├── entities
-│   │       |── pages
+│   │       ├── composable
+│   │       ├── pages
+│   │       ├── services    # - module services
+│   │       ├── store       # - module local state manager extnnsions
+│   │       |── types       # - module extra types
+│   │       └── index.ts
 │   │       └── routes.ts
 │   ├── @ui                 # – common reusable ui in atomic design (atoms, molecules, organisms)
 │   ├── api                 # – api client logic
 │   ├── css                 # – global / common css styles
+│   ├── composable
 │   ├── plugins             # - vue plugins
 │   ├── router              # - vue router
 │   ├── store               # - local state manager
+│   ├── services            # - local state manager
 │   ├── tools
 │   ├── utils
 │   ├── i18n                # - i18n files

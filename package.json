@@ -75,8 +75,10 @@
     "prettier": "2.2.1",
     "standardx": "7.0.0",
     "tailwindcss": "2.0.3",
+    "ts-jest": "^26.5.2",
     "typescript": "4.1.5",
-    "vue-jest": "5.0.0-alpha.0",
+    "typescript-plugin-css-modules": "^3.2.0",
+    "vue-jest": "5.0.0-alpha.8",
     "webpack": "5.24.2",
     "webpack-dev-server": "3.11.2",
     "webpack-log": "^3.0.1"
@@ -91,7 +93,7 @@
     "webpack-dev-server": "3.11.2",
     "typescript": "4.1.5",
     "@vue/test-utils": "2.0.0-rc.1",
-    "vue-jest": "5.0.0-alpha.0",
+    "vue-jest": "5.0.0-alpha.8",
     "postcss": "8.2.6"
   }
 }

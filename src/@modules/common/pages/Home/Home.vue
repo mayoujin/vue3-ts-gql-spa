@@ -1,2 +1,12 @@
-<template src="./template.html" />
-<script src="./setup.js"></script>
+<template>
+  <div>About</div>
+</template>
+
+<script lang="ts">
+import { setup } from './setup'
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  setup,
+})
+</script>

@@ -1,8 +1,9 @@
-import { PageHeaderDataSymbol } from '@modules/common/PageHeader/PageHeader'
+import { PageHeaderDataSymbol } from '@modules/common/PageHeader'
+import { Metadata } from '@modules/common/types'
 
-export const metadata = {
+export const metadata: Metadata = {
   [PageHeaderDataSymbol]: {
     title: 'Проверка Reshadow',
-    subtitle: 'Как работают стили',
+    'sub-title': 'Как работают стили',
   },
 }

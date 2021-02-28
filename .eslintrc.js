@@ -64,16 +64,16 @@ module.exports = {
     // See https://github.com/typescript-eslint/typescript-eslint/issues/493
     '@typescript-eslint/explicit-function-return-type': 'off',
 
-    //'vue/max-attributes-per-line': [
-    //  'error',
-    //  {
-    //    singleline: 1,
-    //    multiline: {
-    //      max: 3,
-    //      allowFirstLine: true,
-    //    },
-    //  },
-    //],
+    'vue/max-attributes-per-line': [
+      'error',
+      {
+        singleline: 1,
+        multiline: {
+          max: 3,
+          allowFirstLine: true,
+        },
+      },
+    ],
     // https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/component-name-in-template-casing.md
     'vue/html-indent': [
       'warn',

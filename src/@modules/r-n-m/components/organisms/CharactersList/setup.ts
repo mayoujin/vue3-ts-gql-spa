@@ -1,11 +1,39 @@
-import { toRefs, reactive, ToRefs } from '@vue/reactivity'
-import { ComponentProps, RawBindings } from './types/props'
+/**
+ * Global, Api Types
+ */
+import { PropType } from 'vue'
+import { ComponentPropsOptions } from '@vue/runtime-core'
 
+/**
+ * Global JS Libs, Vue Utils, Helpers, Plugins
+ */
+import { toRefs, ToRefs } from '@vue/reactivity'
+
+/**
+ * Local types, resources
+ */
+import { ComponentProps, RawBindings } from './types'
+
+/**
+ * Component props definition
+ */
+export const props: ComponentPropsOptions<ComponentProps> = {
+  isLoading: Boolean,
+  characters: Array as PropType<ComponentProps['characters']>,
+}
+
+/**
+ * Setup function
+ *
+ * @param props
+ * @param context
+ */
 export const setup: SetupFunction<ComponentProps, ToRefs<RawBindings>> = (
   props,
   context,
 ) => {
   const { emit } = context
+  const { characters, isLoading } = toRefs(props)
 
   const onAction = ($event, action, ...args) => {
     emit('action', action, args)
@@ -13,10 +41,7 @@ export const setup: SetupFunction<ComponentProps, ToRefs<RawBindings>> = (
 
   return {
     onAction,
-    ...toRefs(props),
+    characters,
+    isLoading,
   }
-}
-
-export default {
-  setup,
 }

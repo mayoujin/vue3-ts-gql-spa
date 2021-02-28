@@ -6,7 +6,7 @@ const RootLayout = async () =>
   )
 const CharactersList = async () =>
   await import(
-    /* webpackChunkName: "CharactersList"  */ './pages/CharactersList'
+    /* webpackChunkName: "CharactersList"  */ './pages/CharactersListPage'
   )
 
 const ROOT_ROUTE: RouteRecordRaw = {

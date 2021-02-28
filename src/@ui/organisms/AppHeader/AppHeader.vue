@@ -1,21 +1,19 @@
-<template lang="htm">
-<header bem:b="header" bem:type="css-module">
-  <wrapper>
-    <start-slot>
-      <slot name="start"></slot>
-    </start-slot>
-    <center-slot>
-      <slot></slot>
-    </center-slot>
-    <end-slot></end-slot>
-  </wrapper>
-</header>
+<template>
+  <header :class="cn()">
+    <div :class="cn('wrapper')">
+      <div :class="cn('start-slot')">
+        <slot name="start"></slot>
+      </div>
+      <div :class="cn('center-slot')">
+        <slot></slot>
+      </div>
+      <div :class="cn('end-slot')"></div>
+    </div>
+  </header>
 </template>
 
 <script>
-export default {
-  components: {},
-}
+export default {}
 </script>
 
-<style src="./styles.module" lang="postcss" module></style>
+<style src="./styles.module.pcss" lang="postcss" module></style>

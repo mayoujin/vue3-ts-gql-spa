@@ -13,3 +13,4 @@ export const useEmitMetadata = (metadata, context) => {
     })
   })
 }
+useEmitMetadata.eventName = Events.METADATA_EMITTED
