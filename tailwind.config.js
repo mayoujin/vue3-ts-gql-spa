@@ -13,7 +13,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        test: {
+        primary: {
           DEFAULT: '#A0AEC0',
           50: '#FFFFFF',
           100: '#FFFFFF',
