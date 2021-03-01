@@ -1,28 +1,29 @@
 # VueJS 3 SPA code sample project
 
-## Core Technologies
+## Used Technologies
 
-### Framework and PL
+### Core
 - [VueJS 3](https://v3.vuejs.org/) with [JSX templates](https://www.npmjs.com/package/@vue/babel-plugin-jsx)
 - [TypeScript](https://www.typescriptlang.org/) for typechecking
 - [GraphQL Code Generator](https://graphql-code-generator.com/) – automated TypeScript types generator from GraphQL API schema and operations for build-time typechecking
-- [GraphQL](https://graphql.org/) Frontend API
-- [Apollo 3 GraphQL Client](https://www.apollographql.com/)
+- [GraphQL](https://graphql.org/) – Frontend API provider
+- [Apollo 3 GraphQL Client](https://www.apollographql.com/) - Frontend API client and API cache manager
+- [Apollo 3 Local State](https://www.apollographql.com/docs/react/local-state/local-state-management/) - Local state management
 
 ### Infrastructure
-- [Vue CLI](https://cli.vuejs.org/)
-- 📦 Bundler: [Webpack 4](https://webpack.js.org/)
+- [Vue CLI 5](https://cli.vuejs.org/)
+- 📦 Bundler: [Webpack 5](https://webpack.js.org/)
 - Code Linting: [TS StandardX](https://standardjs.com/)
 
 ### Tests
-- [Cypress](https://www.cypress.io/) E2E tests
-- Unit Tests: [Vue Test Utils](https://github.com/vuejs/vue-test-utils-next) + [Vue Jest](https://github.com/vuejs/vue-jest/tree/v3)
+- [Cypress](https://www.cypress.io/) – E2E tests
+- [Jest](http://jestjs.io/) + [Vue Test Utils](https://github.com/vuejs/vue-test-utils-next) + [Vue Jest](https://github.com/vuejs/vue-jest/tree/v3) – Unit Tests
 - [Storybook](https://storybook.js.org/)
 
 ### Styles
-- :bar_chart: CSS: [PostCSS](https://postcss.org/)
-- :triangular_ruler: CSS utility Framework: [Tailwindcss](https://tailwindcss.com/)
-- :bar_chart: [BEM Css Modules](https://postcss.org/), [Reshadow](https://reshadow.dev/)
+- :bar_chart: [PostCSS](https://postcss.org/)
+- :triangular_ruler: [Tailwindcss](https://tailwindcss.com/) – CSS utility Framework
+- :bar_chart: [BEM Css Modules](https://postcss.org/), [Reshadow](https://reshadow.dev/) – Isolated Css-Moules based styles management
 
 ## Project Core Folder Structure
 ```bash
