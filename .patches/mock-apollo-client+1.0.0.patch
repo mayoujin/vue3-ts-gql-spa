@@ -1,0 +1,13 @@
+diff --git a/node_modules/mock-apollo-client/dist/mockLink.js b/node_modules/mock-apollo-client/dist/mockLink.js
+index a2f635d..07e194d 100644
+--- a/node_modules/mock-apollo-client/dist/mockLink.js
++++ b/node_modules/mock-apollo-client/dist/mockLink.js
+@@ -68,7 +68,7 @@ var MockLink = (function (_super) {
+ }(core_1.ApolloLink));
+ exports.MockLink = MockLink;
+ var requestToKey = function (query) {
+-    var queryString = query && graphql_1.print(query);
++    var queryString = query && query.loc.source.body;
+     var requestKey = { query: queryString };
+     return JSON.stringify(requestKey);
+ };

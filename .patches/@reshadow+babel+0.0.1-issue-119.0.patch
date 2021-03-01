@@ -1,5 +1,5 @@
 diff --git a/node_modules/@reshadow/babel/index.js b/node_modules/@reshadow/babel/index.js
-index c849cca..1693dd3 100644
+index c849cca..597a3ed 100644
 --- a/node_modules/@reshadow/babel/index.js
 +++ b/node_modules/@reshadow/babel/index.js
 @@ -76,7 +76,7 @@ const getIsInsideComment = (isInsideComment, lastString) => {
@@ -152,7 +152,7 @@ index c849cca..1693dd3 100644
            }
          }
  
-@@ -452,20 +466,28 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -452,15 +466,15 @@ module.exports = (babel, pluginOptions = {}) => {
              }
            }
  
@@ -171,20 +171,7 @@ index c849cca..1693dd3 100644
            }
          }
  
-         openingElement.attributes.push(...filtered);
- 
-+        if (options.target.startsWith('vue')) {
-+          openingElement.attributes.push(
-+            t.JSXAttribute(
-+              t.JSXIdentifier('__static__')
-+            )
-+          );
-+        }
-+
-         if (closingElement) {
-           closingElement.name = openingElement.name;
-         }
-@@ -476,33 +498,49 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -476,33 +490,44 @@ module.exports = (babel, pluginOptions = {}) => {
       * Think about more effective transformations
       */
  
@@ -193,7 +180,6 @@ index c849cca..1693dd3 100644
 +    if (options.target.startsWith('vue')) {
 +      const {
 +        createJSXElementVisitor,
-+        hasStaticClass,
 +        identifiersToImport,
 +        identifiersWhichRender
 +      } = require(moduleName.concat('/utils'))
@@ -212,43 +198,40 @@ index c849cca..1693dd3 100644
 -            node
 -          } = expressionPath;
 +          const { node } = expressionPath
-+
+ 
+-          if (!(t.isIdentifier(node.callee) && node.callee.name === 'h')) {
+-            return;
 +          if (t.isIdentifier(node.callee)
 +            && identifiersToImport.includes(node.callee.name)) {
 +            addImport(node.callee.name)
-+          }
-+
-+          if (t.isIdentifier(node.callee)
-+            && identifiersWhichRender.includes(node.callee.name) === false) {
-+            return
-+          }
- 
--          if (!(t.isIdentifier(node.callee) && node.callee.name === 'h')) {
-+          const { elementName } = elems.shift()
-+
-+          if (hasStaticClass(node.arguments)) {
-             return;
            }
  
 -          const {
 -            elementName
 -          } = elems.shift();
 -          node.arguments[1] = t.callExpression(t.identifier(addImport('map')), [t.stringLiteral(elementName), node.arguments[1]]);
+-        }
++          if (t.isIdentifier(node.callee)
++            && identifiersWhichRender.includes(node.callee.name) === false) {
++            return
++          }
+ 
+-      });
++          const { elementName } = elems.shift()
++
 +          node.arguments[1] = t.callExpression(t.identifier(addImport('map')), [
 +            t.stringLiteral(elementName),
 +            node.arguments[1],
 +          ])
 +        },
 +      })
-         }
--
--      });
++        }
      }
 -  };
  
    const traverseTaggedTemplate = p => {
      const {
-@@ -650,13 +688,20 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -650,13 +675,20 @@ module.exports = (babel, pluginOptions = {}) => {
            specifiers
          } = p.node;
  
