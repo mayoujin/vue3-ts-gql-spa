@@ -49,6 +49,8 @@
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "2.0.0-rc.1",
     "autoprefixer": "10.2.1",
+    "cssnano": "5.0.0-rc.0",
+    "cssnano-preset-default": "5.0.0-rc.0",
     "babel-eslint": "10.1.0",
     "babel-plugin-import": "^1.13.3",
     "babel-plugin-import-remove-resource-query": "^1.0.0",
@@ -99,6 +101,9 @@
     "@vue/test-utils": "2.0.0-rc.1",
     "vue-jest": "5.0.0-alpha.8",
     "ts-jest": "^26.5.2",
-    "postcss": "8.2.6"
+    "postcss": "8.2.6",
+    "cssnano": "5.0.0-rc.0",
+    "cssnano-preset-default": "5.0.0-rc.0",
+    "autoprefixer": "10.2.1"
   }
 }

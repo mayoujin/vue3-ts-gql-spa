@@ -6,7 +6,7 @@
 - [VueJS 3](https://v3.vuejs.org/) with [JSX templates](https://www.npmjs.com/package/@vue/babel-plugin-jsx)
 - [TypeScript](https://www.typescriptlang.org/) for typechecking
 - [GraphQL Code Generator](https://graphql-code-generator.com/) – automated TypeScript types generator from GraphQL API schema and operations for build-time typechecking
-- [GraphQL](https://graphql.org/) – Frontend API provider
+- [GraphQL API](https://rickandmortyapi.com/graphql) – Frontend API provider
 - [Apollo 3 GraphQL Client](https://www.apollographql.com/) - Frontend API client and API cache manager
 - [Apollo 3 Local State](https://www.apollographql.com/docs/react/local-state/local-state-management/) - Local state management
 
