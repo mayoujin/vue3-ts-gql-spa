@@ -3,21 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "npm run serve",
     "serve": "vue-cli-service serve ./src",
     "build": "vue-cli-service build ./src",
+    "prebuild": "npm ci",
+    "prestart": "npm run gql-types",
     "test:unit": "vue-cli-service test:unit --debug",
     "lint": "vue-cli-service lint ./src",
     "gql-types": "graphql-codegen",
-    "patch-reshadow": "mkdir ./node_modules/@reshadow/vue3 && cp ./patches/vue3/* ./node_modules/@reshadow/vue3",
-    "postinstall": "npm run patch-reshadow && npx patch-package",
-    "preinstall": "npx npm-force-resolutions"
+    "postinstall": "npm run patch-packages && npx dedupe-npm-install",
+    "preinstall": "npx npm-force-resolutions",
+    "patch-reshadow": "mkdir ./node_modules/@reshadow/vue3 && cp ./.patches/vue3/* ./node_modules/@reshadow/vue3",
+    "patch-packages": "npm run patch-reshadow && npx patch-package --patch-dir=.patches"
   },
   "main": "./src/index.js",
   "dependencies": {
     "@apollo/client": "3.3.11",
     "@apollo/link-context": "2.0.0-beta.3",
     "@vue/apollo-composable": "4.0.0-alpha.12",
-    "ant-design-vue": "2.0.0",
+    "ant-design-vue": "2.0.1",
     "core-js": "3.8.3",
     "graphql": "15.5.0",
     "reshadow": "0.0.1-alpha.78",
@@ -75,13 +79,10 @@
     "prettier": "2.2.1",
     "standardx": "7.0.0",
     "tailwindcss": "2.0.3",
-    "ts-jest": "^26.5.2",
     "typescript": "4.1.5",
     "typescript-plugin-css-modules": "^3.2.0",
-    "vue-jest": "5.0.0-alpha.8",
     "webpack": "5.24.2",
-    "webpack-dev-server": "3.11.2",
-    "webpack-log": "^3.0.1"
+    "webpack-sources": "2.2.0"
   },
   "browserslist": [
     "> 1%",
@@ -89,11 +90,15 @@
     "not dead"
   ],
   "resolutions": {
+    "vue": "3.0.6",
+    "vue-router": "4.0.4",
     "webpack": "5.24.2",
     "webpack-dev-server": "3.11.2",
+    "webpack-sources": "2.2.0",
     "typescript": "4.1.5",
     "@vue/test-utils": "2.0.0-rc.1",
     "vue-jest": "5.0.0-alpha.8",
+    "ts-jest": "^26.5.2",
     "postcss": "8.2.6"
   }
 }
