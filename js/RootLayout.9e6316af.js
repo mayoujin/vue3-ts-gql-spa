@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["RootLayout"],{"0a37":function(n,o,t){"use strict";t.r(o);var e=t("7a23"),u=t("6c02");o["default"]=function(){return Object(e["createVNode"])(u["b"],null,null)}}}]);
-//# sourceMappingURL=RootLayout.9e6316af.js.map

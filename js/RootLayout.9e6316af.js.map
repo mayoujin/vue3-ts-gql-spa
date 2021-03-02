@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/@modules/r-n-m/layouts/base.jsx"],"names":[],"mappings":"iJACe,wDAAC","file":"js/RootLayout.9e6316af.js","sourcesContent":["import { RouterView } from 'vue-router'\nexport default () => <RouterView></RouterView>\n"],"sourceRoot":""}

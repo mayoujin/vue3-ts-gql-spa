@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://vue3-ts-gql-spa/./src/@modules/r-n-m/components/layouts/base.jsx"],"names":[],"mappings":"6JACA,wBAAe,wBAAC","file":"js/RootLayout.61d34546.js","sourcesContent":["import { RouterView } from 'vue-router'\nexport default () => <RouterView></RouterView>\n"],"sourceRoot":""}
