@@ -19,6 +19,21 @@ const ruleGqlTagLoader = (config) => {
 /**
  * @type ChainWebpackFunction
  */
+const ruleExposeDefineComponent = (config) => {
+  config.module
+    .rule('expose-global')
+    .test(require.resolve('vue'))
+    .use('expose-loader')
+    .loader('graphql-tag/loader')
+    .options({
+      exposes: ['defineComponent'],
+    })
+    .end()
+}
+
+/**
+ * @type ChainWebpackFunction
+ */
 const rulePosthtmlLoader = (config) => {
   config.module
     .rule('htm')
@@ -29,10 +44,17 @@ const rulePosthtmlLoader = (config) => {
 }
 
 /**
+ * Exclude `cssnano` optimizations for postcss and css files
+ * to reduce building time due to demo project
+ *
  * @type ChainWebpackFunction
  */
-const pluginsDeleteOptimizeCss = (config) => {
-  config.plugins.delete('optimize-css')
+const pluginsDeleteCssNano = (config) => {
+  ;['css', 'postcss', 'less', 'scss', 'stylus', 'sass'].forEach((fileType) => {
+    config.module.rule(fileType).oneOfs.store.forEach((oneOf) => {
+      oneOf.uses.store.delete('cssnano')
+    })
+  })
 }
 
 /**
@@ -47,7 +69,9 @@ const ruleEslintDisable = (config) => {
  * @type ChainWebpackFunction[]
  */
 const configChainFnLis = [
-  pluginsDeleteOptimizeCss,
+  //pluginsDeleteTsChecker,
+  //pluginsDeleteCssNano,
+  ruleExposeDefineComponent,
   ruleGqlTagLoader,
   ruleEslintDisable,
   rulePosthtmlLoader,
