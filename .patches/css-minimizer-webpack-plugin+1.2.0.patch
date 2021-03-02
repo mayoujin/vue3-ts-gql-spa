@@ -1,0 +1,13 @@
+diff --git a/node_modules/css-minimizer-webpack-plugin/dist/minify.js b/node_modules/css-minimizer-webpack-plugin/dist/minify.js
+index 69ce92f..5efe984 100644
+--- a/node_modules/css-minimizer-webpack-plugin/dist/minify.js
++++ b/node_modules/css-minimizer-webpack-plugin/dist/minify.js
+@@ -47,7 +47,7 @@ const minify = async options => {
+     };
+   }
+ 
+-  const result = await cssnano.process(input, postcssOptions, minimizerOptions);
++  const result = await cssnano(minimizerOptions).process(input, postcssOptions);
+   return {
+     code: result.css,
+     map: result.map && result.map.toString(),

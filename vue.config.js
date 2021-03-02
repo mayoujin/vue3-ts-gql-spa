@@ -14,7 +14,7 @@ module.exports = {
         },
       },
     },
-    extract: false,
+    extract: true,
   },
   publicPath: process.env.npm_config_publicPath || '/',
 }
