@@ -74,11 +74,3 @@ var use = function use(obj) {
 exports.use = use
 var _default = _core['default']
 exports['default'] = _default
-
-var _vue = require('vue')
-var _vueCore = require('@vue/runtime-core')
-
-exports._createVNode = _vue.createVNode
-exports._createTextVNode = _vue.createTextVNode
-exports._mergeProps = _vue.mergeProps
-exports._resolveComponent = _vueCore.resolveComponent

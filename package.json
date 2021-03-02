@@ -67,6 +67,7 @@
     "eslint-webpack-plugin": "^2.5.2",
     "graphql-tag": "2.11.0",
     "graphql-tools": "^6.2.6",
+    "expose-loader": "2.0.0",
     "jest-transform-graphql": "^2.1.0",
     "jsdoc-import-typedef": "^4.0.0-dev",
     "mock-apollo-client": "^1.0.0",
