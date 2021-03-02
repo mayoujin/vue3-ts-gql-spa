@@ -4,7 +4,7 @@ import { metadata } from './config'
 /**
  *
  */
-export const setup = (props, context) => {
+export const setup = (_, context) => {
   useEmitMetadata(metadata, context)
   return {}
 }

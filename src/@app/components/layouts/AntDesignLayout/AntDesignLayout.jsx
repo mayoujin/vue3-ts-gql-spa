@@ -1,14 +1,14 @@
 import { ref } from '@vue/reactivity'
 import { Transition } from '@vue/runtime-dom'
-import styled from 'reshadow'
+//import styled from 'reshadow'
 
-import stylesShadow from './styles.shadow.css'
-//import { useBemClassnameBindings } from '@/plugins/bem'
+//import stylesShadow from './styles.shadow.css'
+import { useBemClassnameBindings } from '@/plugins/bem'
 
 import { Layout /*, Breadcrumb */ } from 'ant-design-vue'
 import { AppHeader } from '@ui/organisms'
 import { HeaderNavMenu as NavMenu } from '@/@app/components/HeaderNavMenu'
-//import styles from './styles.module'
+import styles from './styles.module'
 
 import PageHeader, {
   usePageHeaderMetadataReceiver,
@@ -16,7 +16,7 @@ import PageHeader, {
 
 const { Content, Footer } = Layout
 
-//const cn = useBemClassnameBindings(styles)
+const cn = useBemClassnameBindings(styles)
 
 const useMetadata = function () {
   const metadataRef = ref({})
@@ -36,31 +36,29 @@ const useMetadata = function () {
  * @param _
  * @param context
  */
-const setup = (_, context) => {
+const Component = (_, context) => {
   const { metadataRef, onMetadataEmitted } = useMetadata()
   const { slots } = context
   const pageHeaderProps = usePageHeaderMetadataReceiver(metadataRef)
-  // styled(stylesShadow)(
-  // @ts-ignore
   return () => (
-    <Layout>
+    <Layout {...cn()}>
       {/*// @ts-ignore*/}
-      <AppHeader>
-        <NavMenu />
+      <AppHeader {...cn('Header')}>
+        <NavMenu {...cn('NavMenu')} />
       </AppHeader>
-      <PageHeader {...pageHeaderProps.value} />
-      <Content>
+      <PageHeader {...pageHeaderProps.value} {...cn('PageHeader')} />
+      <Content {...cn('Content')}>
         <Transition name="slide-fade">
           {slots.default({
             onMetadataEmitted,
           })}
         </Transition>
       </Content>
-      <Footer>Footer</Footer>
+      <Footer {...cn('Footer')}>Footer</Footer>
     </Layout>
   )
 }
 
 export default {
-  setup,
+  setup: Component,
 }
