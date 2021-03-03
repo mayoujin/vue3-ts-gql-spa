@@ -19,6 +19,8 @@ jobs:
         run: |
           npm ci
           npm run packages:minimize
+          find ./ -type d -name "webpack"
+          find ./ -type d -name "vue-jest"
           npm run build --publicPath=/vue3-ts-gql-spa/
       - name: Unit Test🔎
         run: |
