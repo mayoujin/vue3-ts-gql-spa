@@ -18,10 +18,8 @@ module.exports.transformIgnorePatterns = [
 ]
 
 module.exports.transform = {
-  //'^.+node_modules/.*\\.js$': 'jest-esm-transformer',
   '.+\\.(gql|graphql)$': 'jest-transform-graphql',
   '.+\\.(pcss)$': 'jest-transform-stub',
-  '.+(type=template)$': 'vue-jest',
 }
 
 module.exports.moduleNameMapper = {
