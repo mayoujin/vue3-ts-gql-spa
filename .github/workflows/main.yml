@@ -22,6 +22,7 @@ jobs:
           find ./ -type d -name "webpack"
           find ./ -type d -name "vue-jest"
           find ./ -type d -name "cssnano"
+          find ./ -type d -name "cssnano-preset-default"
           npm run build --publicPath=/vue3-ts-gql-spa/
       - name: Unit Test🔎
         run: |
