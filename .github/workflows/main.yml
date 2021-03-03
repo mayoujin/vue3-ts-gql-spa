@@ -17,6 +17,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install and Build 🔧
         run: |
+          npm ci
+          npm run packages:minimize
+          npm run packages:minimize
           npm run build --publicPath=/vue3-ts-gql-spa/
       - name: Unit Test🔎
         run: |
