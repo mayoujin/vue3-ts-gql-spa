@@ -4,32 +4,34 @@
     data-test-component="CharactersSection"
   >
     <template #actions="{ item }">
-      <AButton :key="item.id"
-               type="link" @click="onAdd(item)"
-      >
+      <AddButton :key="item.id" type="link" @click="onAdd(item)">
         Add
-      </AButton>
+      </AddButton>
     </template>
   </CharactersList>
 </template>
 
 <script>
 import CharactersList from '@modules/r-n-m/components/organisms/CharactersList'
-import { Button as AButton } from '@ui/index'
+import { Button } from '@ui'
 
 import { props } from '@modules/r-n-m/components/organisms/CharactersList/setup'
+
+const Emits = {
+  ADD: 'add',
+}
 
 export default {
   name: 'CharactersSection',
   components: {
     CharactersList,
-    AButton,
+    AddButton: Button,
   },
   props,
-  emits: ['add'],
+  emits: [Emits.ADD],
   methods: {
-    onAdd (item) {
-      this.$emit('add', item)
+    onAdd(item) {
+      this.$emit(Emits.ADD, item)
     },
   },
 }

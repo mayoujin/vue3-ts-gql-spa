@@ -5,6 +5,7 @@ import { createMockClient, provideMockClient } from 'tests/mocks'
 import CharactersListPage from '@modules/r-n-m/pages/CharactersListPage'
 
 import { requests as charactersRequests } from './stubs'
+import { Heroes } from '@modules/r-n-m/types/heroes'
 
 const Selectors = {
   CharactersSection: '[data-test-component="CharactersSection"]',
@@ -56,24 +57,35 @@ describe('CharactersListPage.vue', () => {
   })
 
   it('should add Character to Favourite Heroes', async () => {
+    const heroesUpdated = new Promise<{ heroes: Heroes }>((resolve) => {
+      wrapper.vm.$watch('heroes', (heroes) => {
+        resolve({ heroes })
+      })
+    })
     await charactersListItems[0].find('button').trigger('click')
     await flushPromises()
-    await wrapper.vm.$nextTick()
+    const { heroes } = await heroesUpdated
     heroesListItems = heroesComponent.findAll(Selectors.CharacterListItem)
-    expect(heroesListItems).toHaveLength(1)
+    expect(heroesListItems).toHaveLength(heroes.length)
   })
 
   it('should not add the same Character to Favourite Heroes', async () => {
     await charactersListItems[0].find('button').trigger('click')
     await flushPromises()
-    await wrapper.vm.$nextTick()
     expect(heroesComponent.findAll(Selectors.CharacterListItem)).toHaveLength(1)
   })
 
   it('should remove Favourite Hero from Favourite Heroes section', async () => {
+    const heroesUpdated = new Promise<{ heroes: Heroes }>((resolve) => {
+      wrapper.vm.$watch('heroes', (heroes) => {
+        resolve({ heroes })
+      })
+    })
     await heroesListItems[0].find('button').trigger('click')
     await flushPromises()
-    await wrapper.vm.$nextTick()
-    expect(heroesComponent.findAll(Selectors.CharacterListItem)).toHaveLength(0)
+    const { heroes } = await heroesUpdated
+    expect(heroesComponent.findAll(Selectors.CharacterListItem)).toHaveLength(
+      heroes.length,
+    )
   })
 })
