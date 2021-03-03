@@ -1,0 +1,7 @@
+{
+    "target_path": "./node_modules",
+    "defaultCollapse": "same",
+    "extraCollapse": {
+        "cssnano": [">=4.0.0 || 5.0.0-rc.0 || 5.x"]
+    }
+}

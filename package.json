@@ -14,7 +14,7 @@
     "packages:minimize": "npx dedupe-npm-install",
     "packages:patch-reshadow": "mkdir ./node_modules/@reshadow/vue3 && cp ./.patches/vue3/* ./node_modules/@reshadow/vue3",
     "postinstall": "npm run packages:patch",
-    "prebuild": "npm ci"
+    "prebuild": "npm ci && npm run packages:minimize"
   },
   "main": "./src/index.js",
   "dependencies": {
