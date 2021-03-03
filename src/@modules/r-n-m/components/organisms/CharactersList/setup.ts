@@ -2,12 +2,12 @@
  * Global, Api Types
  */
 import { PropType } from 'vue'
-import { ComponentPropsOptions } from '@vue/runtime-core'
+import { ComponentPropsOptions } from 'vue'
 
 /**
  * Global JS Libs, Vue Utils, Helpers, Plugins
  */
-import { toRefs, ToRefs } from '@vue/reactivity'
+import { toRefs, ToRefs } from 'vue'
 
 /**
  * Local types, resources

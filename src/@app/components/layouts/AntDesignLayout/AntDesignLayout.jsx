@@ -1,18 +1,18 @@
-import { ref } from '@vue/reactivity'
-import { Transition } from '@vue/runtime-dom'
-//import styled from 'reshadow'
+import { ref, Transition } from 'vue'
 
-//import stylesShadow from './styles.shadow.css'
+// import styled from 'reshadow'
+
+// import stylesShadow from './styles.shadow.css'
 import { useBemClassnameBindings } from '@/plugins/bem'
 
 import { Layout /*, Breadcrumb */ } from 'ant-design-vue'
-import { AppHeader } from '@ui/organisms'
-import { HeaderNavMenu as NavMenu } from '@/@app/components/HeaderNavMenu'
-import styles from './styles.module'
+import { AppHeader } from '@app/components/organisms'
+import { HeaderNavMenu as NavMenu } from '@app/components/organisms/HeaderNavMenu'
+import styles from './styles.module.pcss'
 
 import PageHeader, {
   usePageHeaderMetadataReceiver,
-} from '@modules/common/PageHeader'
+} from '@app/components/organisms/PageHeader'
 
 const { Content, Footer } = Layout
 
@@ -42,7 +42,7 @@ const Component = (_, context) => {
   const pageHeaderProps = usePageHeaderMetadataReceiver(metadataRef)
   return () => (
     <Layout {...cn()}>
-      {/*// @ts-ignore*/}
+      {/* // @ts-ignore */}
       <AppHeader {...cn('Header')}>
         <NavMenu {...cn('NavMenu')} />
       </AppHeader>

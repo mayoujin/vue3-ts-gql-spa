@@ -2,10 +2,9 @@ import {
   defineProps as definePropsFn,
   defineEmit as defineEmitFn,
   RenderFunction as RenderFunctionOriginal,
+  SetupContext,
 } from 'vue'
-import { defineComponent as defineComponentFn } from '@vue/runtime-core/dist/runtime-core.d'
-
-import { SetupContext } from '@vue/runtime-core'
+import { defineComponent as defineComponentFn } from 'vue/dist/vue.d'
 
 declare module '*.vue' {
   const Component: ReturnType<typeof defineComponentFn>
@@ -37,9 +36,9 @@ declare global {
   const defineBindings: typeof definePropsFn
   const defineEmits: typeof defineEmitFn
 
-  namespace JSX {
-    interface Element extends ReturnType<typeof defineComponentFn> {}
-  }
+  // namespace JSX {
+  //   interface Element extends ReturnType<typeof defineComponentFn> {}
+  // }
 
   type RenderFunction = RenderFunctionOriginal | (() => JSX.Element)
 }

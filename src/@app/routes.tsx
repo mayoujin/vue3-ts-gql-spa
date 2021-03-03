@@ -1,5 +1,6 @@
 import Layout from '@/@app/components/layouts/AntDesignLayout/AntDesignLayout'
 import { RouterView } from 'vue-router'
+// @ts-ignore
 export const routes = [
   {
     path: '/',
@@ -8,6 +9,7 @@ export const routes = [
       // @ts-ignore
       <Layout
         v-slots={{
+          // @ts-ignore
           default: (props) => <RouterView {...props} />,
         }}
       ></Layout>

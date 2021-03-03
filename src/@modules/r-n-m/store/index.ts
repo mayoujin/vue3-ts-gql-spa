@@ -1,7 +1,7 @@
-export { useStoreVariable } from '@/store'
-
 import { useEventHook } from '@vue/apollo-composable/dist/util/useEventHook.js'
 import { useStoreVariable as useStoreVariableFn } from '@/store'
+
+export { useStoreVariable } from '@/store'
 
 // const useStoreVariableEventHook = useEventHook<>()
 

@@ -1,16 +1,15 @@
 <template>
   <h1>Favourites</h1>
   <HeroesSection
-    @remove="onRemove"
     :is-loading="isLoading"
     :characters="heroes"
-  >
-  </HeroesSection>
+    @remove="onRemove"
+  />
   <h1>All</h1>
   <CharactersSection
-    @add="onAdd"
     :is-loading="isLoading"
     :characters="characters"
+    @add="onAdd"
   />
 </template>
 

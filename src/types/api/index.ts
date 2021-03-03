@@ -5,7 +5,7 @@ export type Exact<T extends { [key: string]: unknown }> = {
 }
 export type ReactiveFunction<TParam> = () => TParam
 /** All built-in and custom scalars, mapped to their actual values */
-export type Scalars = {
+export interface Scalars {
   ID: string
   String: string
   Boolean: boolean
@@ -15,7 +15,7 @@ export type Scalars = {
   Upload: any
 }
 
-export type Query = {
+export interface Query {
   __typename?: 'Query'
   /** Get a specific character by ID */
   character?: Maybe<Character>
@@ -37,46 +37,46 @@ export type Query = {
   episodesByIds?: Maybe<Array<Maybe<Episode>>>
 }
 
-export type QueryCharacterArgs = {
+export interface QueryCharacterArgs {
   id: Scalars['ID']
 }
 
-export type QueryCharactersArgs = {
+export interface QueryCharactersArgs {
   page?: Maybe<Scalars['Int']>
   filter?: Maybe<FilterCharacter>
 }
 
-export type QueryCharactersByIdsArgs = {
+export interface QueryCharactersByIdsArgs {
   ids: Array<Scalars['ID']>
 }
 
-export type QueryLocationArgs = {
+export interface QueryLocationArgs {
   id: Scalars['ID']
 }
 
-export type QueryLocationsArgs = {
+export interface QueryLocationsArgs {
   page?: Maybe<Scalars['Int']>
   filter?: Maybe<FilterLocation>
 }
 
-export type QueryLocationsByIdsArgs = {
+export interface QueryLocationsByIdsArgs {
   ids: Array<Scalars['ID']>
 }
 
-export type QueryEpisodeArgs = {
+export interface QueryEpisodeArgs {
   id: Scalars['ID']
 }
 
-export type QueryEpisodesArgs = {
+export interface QueryEpisodesArgs {
   page?: Maybe<Scalars['Int']>
   filter?: Maybe<FilterEpisode>
 }
 
-export type QueryEpisodesByIdsArgs = {
+export interface QueryEpisodesByIdsArgs {
   ids: Array<Scalars['ID']>
 }
 
-export type Character = {
+export interface Character {
   __typename?: 'Character'
   /** The id of the character. */
   id?: Maybe<Scalars['ID']>
@@ -105,7 +105,7 @@ export type Character = {
   created?: Maybe<Scalars['String']>
 }
 
-export type Location = {
+export interface Location {
   __typename?: 'Location'
   /** The id of the location. */
   id?: Maybe<Scalars['ID']>
@@ -121,7 +121,7 @@ export type Location = {
   created?: Maybe<Scalars['String']>
 }
 
-export type Episode = {
+export interface Episode {
   __typename?: 'Episode'
   /** The id of the episode. */
   id?: Maybe<Scalars['ID']>
@@ -137,7 +137,7 @@ export type Episode = {
   created?: Maybe<Scalars['String']>
 }
 
-export type FilterCharacter = {
+export interface FilterCharacter {
   name?: Maybe<Scalars['String']>
   status?: Maybe<Scalars['String']>
   species?: Maybe<Scalars['String']>
@@ -145,13 +145,13 @@ export type FilterCharacter = {
   gender?: Maybe<Scalars['String']>
 }
 
-export type Characters = {
+export interface Characters {
   __typename?: 'Characters'
   info?: Maybe<Info>
   results?: Maybe<Array<Maybe<Character>>>
 }
 
-export type Info = {
+export interface Info {
   __typename?: 'Info'
   /** The length of the response. */
   count?: Maybe<Scalars['Int']>
@@ -163,24 +163,24 @@ export type Info = {
   prev?: Maybe<Scalars['Int']>
 }
 
-export type FilterLocation = {
+export interface FilterLocation {
   name?: Maybe<Scalars['String']>
   type?: Maybe<Scalars['String']>
   dimension?: Maybe<Scalars['String']>
 }
 
-export type Locations = {
+export interface Locations {
   __typename?: 'Locations'
   info?: Maybe<Info>
   results?: Maybe<Array<Maybe<Location>>>
 }
 
-export type FilterEpisode = {
+export interface FilterEpisode {
   name?: Maybe<Scalars['String']>
   episode?: Maybe<Scalars['String']>
 }
 
-export type Episodes = {
+export interface Episodes {
   __typename?: 'Episodes'
   info?: Maybe<Info>
   results?: Maybe<Array<Maybe<Episode>>>
@@ -195,22 +195,22 @@ export type CharactersQueryVariables = Exact<{ [key: string]: never }>
 
 export type CharactersQuery = { __typename?: 'Query' } & {
   characters?: Maybe<
-    { __typename?: 'Characters' } & {
-      results?: Maybe<
-        Array<
-          Maybe<
-            { __typename?: 'Character' } & Pick<
-              Character,
-              'id' | 'name' | 'species' | 'type' | 'image'
-            > & {
-                location?: Maybe<
-                  { __typename?: 'Location' } & Pick<Location, 'name'>
-                >
-              }
-          >
-        >
+  { __typename?: 'Characters' } & {
+    results?: Maybe<
+    Array<
+    Maybe<
+    { __typename?: 'Character' } & Pick<
+    Character,
+    'id' | 'name' | 'species' | 'type' | 'image'
+    > & {
+      location?: Maybe<
+      { __typename?: 'Location' } & Pick<Location, 'name'>
       >
     }
+    >
+    >
+    >
+  }
   >
 }
 

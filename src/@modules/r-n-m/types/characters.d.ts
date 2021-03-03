@@ -9,7 +9,7 @@ declare enum CharacterPropNamesEnum {
 }
 
 declare type Character = Required<
-  Pick<CharacterFull, CharacterPropNamesEnum>
+Pick<CharacterFull, CharacterPropNamesEnum>
 > & {
   location: Pick<Location, 'name'>
 }

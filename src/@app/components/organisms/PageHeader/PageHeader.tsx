@@ -1,9 +1,9 @@
 /**
  * Global UI
  */
-import { PageHeader } from 'ant-design-vue'
+import { PageHeader } from '@ui'
 
-export type ComponentProps = {
+export interface ComponentProps {
   title: string
   'sub-title': string
 }
@@ -12,6 +12,7 @@ const Component: SetupFunction<ComponentProps, JSX.Element> = ({
   title,
   'sub-title': subtitle,
 }) => {
+  // @ts-ignore
   return <PageHeader title={title} sub-title={subtitle} />
 }
 

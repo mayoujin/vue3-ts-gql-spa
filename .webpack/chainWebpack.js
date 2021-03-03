@@ -1,5 +1,5 @@
 /**
- * @typedef { import("webpack-chain") } ChainableWebpackConfig
+ * @typedef { import("@vue/cli-service/node_modules/webpack-chain") } ChainableWebpackConfig
  * @typedef { function(config: ChainableWebpackConfig): void } ChainWebpackFunction
  * @property {ChainableWebpackConfig} config
  */
@@ -24,9 +24,9 @@ const ruleExposeDefineComponent = (config) => {
     .rule('expose-global')
     .test(require.resolve('vue'))
     .use('expose-loader')
-    .loader('graphql-tag/loader')
+    .loader('expose-loader')
     .options({
-      exposes: ['defineComponent'],
+      exposes: ['defineComponent', 'ref', 'computed', 'watch'],
     })
     .end()
 }
@@ -41,6 +41,13 @@ const rulePosthtmlLoader = (config) => {
     .use('posthtml-loader')
     .loader('posthtml-loader')
     .end()
+}
+
+/**
+ * @type ChainWebpackFunction
+ */
+const pluginsDeleteTsChecker = (config) => {
+  config.plugins.delete('fork-ts-checker')
 }
 
 /**
@@ -69,8 +76,8 @@ const ruleEslintDisable = (config) => {
  * @type ChainWebpackFunction[]
  */
 const configChainFnLis = [
-  //pluginsDeleteTsChecker,
   //pluginsDeleteCssNano,
+  pluginsDeleteTsChecker,
   ruleExposeDefineComponent,
   ruleGqlTagLoader,
   ruleEslintDisable,

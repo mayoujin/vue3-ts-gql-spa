@@ -10,7 +10,7 @@ export interface ComponentProps {
   [ComponentPropsEnum.IS_LOADING]: boolean
 }
 
-export type RawBindings = {
+export interface RawBindings {
   [ComponentPropsEnum.CHARACTERS]: Characters
   [ComponentPropsEnum.IS_LOADING]: boolean
 }

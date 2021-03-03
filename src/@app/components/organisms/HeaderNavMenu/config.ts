@@ -12,10 +12,12 @@ interface MenuItemParams {
 }
 
 export const MenuItemsList = [
+/*
   {
     title: 'About',
     route: COMMON_ROUTES.ABOUT,
   },
+*/
   {
     title: 'Home',
     route: COMMON_ROUTES.HOME,

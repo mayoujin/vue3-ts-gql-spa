@@ -5,7 +5,7 @@ export const heroes = useStoreVariable<Heroes>({
   extendTypePolicies: (typePolicies, variable) => {
     typePolicies.Query.fields.heroes = {
       ...typePolicies.Query.fields.heroes,
-      read() {
+      read () {
         return variable()
       },
     }

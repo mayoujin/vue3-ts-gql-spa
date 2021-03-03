@@ -1,8 +1,8 @@
 import {
   ComponentProps as PageHeaderProps,
   PageHeaderDataSymbol,
-} from '@modules/common/PageHeader'
+} from '@app/components/organisms/PageHeader'
 
-export type Metadata = {
+export interface Metadata {
   [PageHeaderDataSymbol]?: PageHeaderProps
 }

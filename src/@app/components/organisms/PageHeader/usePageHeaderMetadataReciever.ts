@@ -1,6 +1,4 @@
-import { computed, ref } from '@vue/reactivity'
-import { watch } from '@vue/runtime-core'
-import { ComputedRef } from 'vue'
+import { watch, computed, ref, ComputedRef } from 'vue'
 import { ComponentProps } from './PageHeader'
 
 export const PageHeaderDataSymbol = Symbol('PageHeaderDataSymbol')

@@ -1,6 +1,7 @@
 const aliases = {
   '@': 'src',
   '@ui': 'src/@ui',
+  '@app': 'src/@app',
   '@api': 'src/api',
   '@modules': 'src/@modules',
   boot: 'src/.boot',

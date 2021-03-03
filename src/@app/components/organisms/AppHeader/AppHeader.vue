@@ -2,12 +2,12 @@
   <header :class="cn()">
     <div :class="cn('wrapper')">
       <div :class="cn('start-slot')">
-        <slot name="start"></slot>
+        <slot name="start" />
       </div>
       <div :class="cn('center-slot')">
-        <slot></slot>
+        <slot />
       </div>
-      <div :class="cn('end-slot')"></div>
+      <div :class="cn('end-slot')" />
     </div>
   </header>
 </template>

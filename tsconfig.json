@@ -30,8 +30,14 @@
       "@ui/*": [
         "src/@ui/*"
       ],
+      "@ui": [
+        "src/@ui/index.ts"
+      ],
       "@api/*": [
         "src/api/*"
+      ],
+      "@app/*": [
+        "src/@app/*"
       ],
       "@modules/*": [
         "src/@modules/*"

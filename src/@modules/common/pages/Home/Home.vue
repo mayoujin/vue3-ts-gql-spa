@@ -7,7 +7,7 @@
         <h2
           class="mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none md:text-center"
         >
-          The quick, brown fox<br class="hidden md:block" />
+          The quick, brown fox<br class="hidden md:block">
           jumps over a lazy dog
         </h2>
         <p class="mb-5 text-base text-gray-700 md:text-lg md:text-center">
@@ -24,35 +24,33 @@
           </a>
         </div>
         <div class="flex flex-col items-center">
-          <div class="mb-2 text-sm text-gray-600 md:mb-2">Follow us</div>
+          <div class="mb-2 text-sm text-gray-600 md:mb-2">
+            Follow us
+          </div>
           <div class="flex items-center space-x-4">
             <div class="flex items-center">
               <a
                 href="/"
                 class="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
-              >
-              </a>
+              />
             </div>
             <div class="flex items-center">
               <a
                 href="/"
                 class="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
-              >
-              </a>
+              />
             </div>
             <div class="flex items-center">
               <a
                 href="/"
                 class="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
-              >
-              </a>
+              />
             </div>
             <div class="flex items-center">
               <a
                 href="/"
                 class="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
-              >
-              </a>
+              />
             </div>
           </div>
         </div>
@@ -65,7 +63,7 @@
         class="object-cover w-full h-56 rounded shadow-lg lg:rounded-none lg:shadow-none md:h-96 lg:h-full"
         src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
         alt=""
-      />
+      >
     </div>
   </div>
 </template>

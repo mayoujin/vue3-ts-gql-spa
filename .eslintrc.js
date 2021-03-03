@@ -33,10 +33,8 @@ module.exports = {
   // See https://eslint.vuejs.org/user-guide/#how-to-use-custom-parser
   // `parser: 'vue-eslint-parser'` is already included with any 'plugin:vue/**' config and should be omitted
   parserOptions: {
-    // parser: 'babel-eslint',
-    // parser: '@typescript-eslint/parser',
     project: './tsconfig.json',
-    extraFileExtensions: ['vue'],
+    extraFileExtensions: ['.vue'],
   },
 
   // add your custom rules here

@@ -4,13 +4,13 @@ import { createMockClient, provideMockClient } from 'tests/mocks'
 
 import CharactersListPage from '@modules/r-n-m/pages/CharactersListPage'
 
+import { requests as charactersRequests } from './stubs'
+
 const Selectors = {
   CharactersSection: '[data-test-component="CharactersSection"]',
   HeroesSection: '[data-test-component="HeroesSection"]',
   CharacterListItem: '[data-test-component="CharacterListItem"]',
 }
-
-import { requests as charactersRequests } from './stubs'
 
 describe('CharactersListPage.vue', () => {
   let wrapper

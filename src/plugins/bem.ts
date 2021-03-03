@@ -1,5 +1,5 @@
 import block from 'bem-css-modules'
-import { inject, provide } from '@vue/runtime-core'
+import { inject, provide } from 'vue'
 
 block.setSettings({
   modifierDelimiter: '--',

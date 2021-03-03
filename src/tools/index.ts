@@ -1,4 +1,4 @@
-import { onBeforeMount } from '@vue/runtime-core'
+import { onBeforeMount } from 'vue'
 
 export const Events = {
   METADATA_EMITTED: 'metadataEmitted',

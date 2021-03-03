@@ -1,4 +1,4 @@
-import { PageHeaderDataSymbol } from '@modules/common/PageHeader'
+import { PageHeaderDataSymbol } from '@app/components/organisms/PageHeader'
 import { Metadata } from '@modules/common/types'
 
 export const metadata: Metadata = {

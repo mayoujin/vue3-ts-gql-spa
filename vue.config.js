@@ -1,7 +1,10 @@
 const { configureWebpack, chainWebpack } = require('./.webpack')
 
 module.exports = {
+  /* build, dev, ci */
   lintOnSave: false,
+  publicPath: process.env.npm_config_publicPath || '/',
+  /* webpack */
   configureWebpack,
   chainWebpack,
   /* CSS */
@@ -16,5 +19,15 @@ module.exports = {
     },
     extract: true,
   },
-  publicPath: process.env.npm_config_publicPath || '/',
+  /* Plugins */
+  pluginOptions: {
+    /* I18n */
+    i18n: {
+      locale: 'en',
+      fallbackLocale: 'en',
+      localeDir: 'locales',
+      enableInSFC: false,
+      enableLegacy: false,
+    },
+  },
 }

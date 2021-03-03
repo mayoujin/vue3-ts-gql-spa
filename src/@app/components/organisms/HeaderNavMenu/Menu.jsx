@@ -1,14 +1,14 @@
 /**
  * Global JS Libs, Vue Utils, Helpers, Plugins
  */
-import { ref } from '@vue/reactivity'
+import { ref } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 import { useBemClassnameBindings } from '@/plugins/bem'
 
 /**
  * Global UI
  */
-import { Menu } from 'ant-design-vue'
+import { Menu } from '@ui'
 
 /**
  * Component-level stuff

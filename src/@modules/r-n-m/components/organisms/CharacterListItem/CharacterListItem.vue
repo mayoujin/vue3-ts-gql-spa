@@ -9,7 +9,7 @@
       </template>
     </AListItemMeta>
     <template #actions>
-      <slot name="actions"></slot>
+      <slot name="actions" />
     </template>
   </AListItem>
 </template>
@@ -19,7 +19,7 @@
  * Global, Api Types
  */
 import { PropType } from 'vue'
-import { ComponentPropsOptions } from '@vue/runtime-core'
+import { ComponentPropsOptions } from 'vue'
 /**
  * Global UI
  */
@@ -42,11 +42,11 @@ export const props: ComponentPropsOptions<Character> = {
 
 export default {
   name: 'CharacterListItem',
-  props,
   components: {
     AListItem: List.Item,
     AListItemMeta: List.Item.Meta,
     AAvatar,
   },
+  props,
 }
 </script>

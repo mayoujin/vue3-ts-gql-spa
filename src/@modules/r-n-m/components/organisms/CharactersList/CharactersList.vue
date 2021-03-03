@@ -1,9 +1,13 @@
 <template>
-  <AList item-layout="horizontal" :data-source="characters">
+  <AList item-layout="horizontal"
+         :data-source="characters"
+  >
     <template #renderItem="{ item }">
       <ListItem v-bind="item">
         <template #actions>
-          <slot name="actions" :item="item"></slot>
+          <slot name="actions"
+                :item="item"
+          />
         </template>
       </ListItem>
     </template>

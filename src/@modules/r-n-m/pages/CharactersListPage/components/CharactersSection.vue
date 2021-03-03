@@ -4,7 +4,11 @@
     data-test-component="CharactersSection"
   >
     <template #actions="{ item }">
-      <AButton type="link" @click="onAdd(item)" :key="item.id"> Add </AButton>
+      <AButton :key="item.id"
+               type="link" @click="onAdd(item)"
+      >
+        Add
+      </AButton>
     </template>
   </CharactersList>
 </template>
@@ -17,16 +21,16 @@ import { props } from '@modules/r-n-m/components/organisms/CharactersList/setup'
 
 export default {
   name: 'CharactersSection',
-  props,
-  emits: ['add'],
-  methods: {
-    onAdd(item) {
-      this.$emit('add', item)
-    },
-  },
   components: {
     CharactersList,
     AButton,
+  },
+  props,
+  emits: ['add'],
+  methods: {
+    onAdd (item) {
+      this.$emit('add', item)
+    },
   },
 }
 </script>

@@ -9,7 +9,7 @@ import { DocumentNode } from 'graphql'
 import { provideApolloClient } from '@/api/index'
 import cache from '@/api/apollo/cache'
 
-type ExtraMockOptions = {
+interface ExtraMockOptions {
   requests: Map<DocumentNode, RequestHandler>
 }
 
