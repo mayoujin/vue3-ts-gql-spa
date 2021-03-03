@@ -1,6 +1,4 @@
-const {
-  pathsToModuleNameMapper,
-} = require('@vue/cli-plugin-unit-jest/node_modules/ts-jest/utils')
+const { pathsToModuleNameMapper } = require('ts-jest/utils')
 const {
   compilerOptions: { paths },
 } = require('../tsconfig.json')

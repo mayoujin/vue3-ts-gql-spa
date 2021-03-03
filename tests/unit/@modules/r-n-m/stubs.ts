@@ -4,7 +4,7 @@ import { Characters } from '@modules/r-n-m/types/characters'
 import { NetworkStatus } from '@apollo/client/core/networkStatus'
 import { DocumentNode } from 'graphql'
 import CharactersListQuery from '@modules/r-n-m/api/operations/queries/CharactersList.query.graphql'
-import jest from '@vue/cli-plugin-unit-jest/node_modules/jest-mock'
+import jest from 'jest-mock'
 
 const queryCharactersDocument = CharactersListQuery
 

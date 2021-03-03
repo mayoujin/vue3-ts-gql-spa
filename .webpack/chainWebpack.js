@@ -22,11 +22,17 @@ const ruleGqlTagLoader = (config) => {
 const ruleExposeDefineComponent = (config) => {
   config.module
     .rule('expose-global')
-    .test(require.resolve('vue'))
+    .test(require.resolve('vue').replace('/index.js', ''))
     .use('expose-loader')
     .loader('expose-loader')
     .options({
-      exposes: ['defineComponent', 'ref', 'computed', 'watch'],
+      exposes: [
+        {
+          globalName: 'defineComponent',
+          moduleLocalName: 'defineComponent',
+          override: true,
+        },
+      ],
     })
     .end()
 }

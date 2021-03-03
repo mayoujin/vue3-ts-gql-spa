@@ -1,1 +1,1 @@
-export { List, Avatar, Button, Menu, PageHeader } from 'ant-design-vue'
+export { List, Avatar, Button, Menu, PageHeader, Layout } from 'ant-design-vue'

@@ -5,7 +5,7 @@ import { ref, Transition } from 'vue'
 // import stylesShadow from './styles.shadow.css'
 import { useBemClassnameBindings } from '@/plugins/bem'
 
-import { Layout /*, Breadcrumb */ } from 'ant-design-vue'
+import { Layout /*, Breadcrumb */ } from '@ui'
 import { AppHeader } from '@app/components/organisms'
 import { HeaderNavMenu as NavMenu } from '@app/components/organisms/HeaderNavMenu'
 import styles from './styles.module.pcss'

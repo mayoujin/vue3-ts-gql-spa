@@ -3,7 +3,9 @@ import {
   defineEmit as defineEmitFn,
   RenderFunction as RenderFunctionOriginal,
   SetupContext,
+  PropType as PropTypeVue,
 } from 'vue'
+
 import { defineComponent as defineComponentFn } from 'vue/dist/vue.d'
 
 declare module '*.vue' {
@@ -11,12 +13,12 @@ declare module '*.vue' {
   export default Component
 }
 
-declare module '*.pcss' {
+declare module '*.css' {
   const content: Record<string, string>
   export default content
 }
 
-declare module '*.css' {
+declare module '*.pcss' {
   const content: Record<string, string>
   export default content
 }
@@ -31,11 +33,10 @@ declare global {
     props: Readonly<Props>,
     ctx: SetupContext,
   ) => ReturnType
-  const defineComponent: typeof defineComponentFn
-  const defineProps: typeof definePropsFn
-  const defineBindings: typeof definePropsFn
-  const defineEmits: typeof defineEmitFn
-
+  export const defineComponent: typeof defineComponentFn
+  export const defineProps: typeof definePropsFn
+  export const defineEmits: typeof defineEmitFn
+  type PropType<T> = PropTypeVue<T>
   // namespace JSX {
   //   interface Element extends ReturnType<typeof defineComponentFn> {}
   // }

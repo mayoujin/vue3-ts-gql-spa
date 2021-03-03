@@ -24,7 +24,7 @@ import HeroesSection from './components/HeroesSection.vue'
 // @ts-ignore
 import $style from './styles.module.pcss'
 
-export default defineComponent<{}, RawBindings>({
+export default defineComponent({
   components: {
     CharactersSection,
     HeroesSection,

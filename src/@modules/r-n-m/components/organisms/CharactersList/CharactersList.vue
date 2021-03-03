@@ -1,13 +1,9 @@
 <template>
-  <AList item-layout="horizontal"
-         :data-source="characters"
-  >
+  <AList item-layout="horizontal" :data-source="characters">
     <template #renderItem="{ item }">
       <ListItem v-bind="item">
         <template #actions>
-          <slot name="actions"
-                :item="item"
-          />
+          <slot name="actions" :item="item" />
         </template>
       </ListItem>
     </template>
@@ -15,8 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { List as AList } from '@ui/index'
+import { List as AList } from '@ui'
 
 import { RawBindings, ComponentProps } from './types'
 import { setup, props } from './setup'
