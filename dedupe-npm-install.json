@@ -3,7 +3,7 @@
     "defaultCollapse": "same",
     "extraCollapse": {
         "vue-jest": [">=3.0.0 || 5.0.0-alpha.8 || 5.x"],
-        "webpack": ["5.x"],
+        "webpack": [">=3.0.0 || 4.x || 5.x"],
         "cssnano": [">=4.0.0 || 5.0.0-rc.0 || 5.x"]
     }
 }
