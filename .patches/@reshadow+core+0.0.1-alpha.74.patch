@@ -1,0 +1,30 @@
+diff --git a/node_modules/@reshadow/core/index.js b/node_modules/@reshadow/core/index.js
+index 4c6e29b..96e31c5 100644
+--- a/node_modules/@reshadow/core/index.js
++++ b/node_modules/@reshadow/core/index.js
+@@ -75,7 +75,7 @@ var create = function create(args) {
+     newStyle[KEYS.__store__] = _defineProperty({}, '_' + _style[KEYS.__id__], newStyle);
+   }
+ 
+-  if (vars || use) {
++  if (vars || uses) {
+     newStyle = Object.create(newStyle);
+     newStyle[KEYS.__style__] = vars;
+     newStyle[KEYS.__use__] = uses;
+@@ -153,13 +153,14 @@ var css = function css(code, hash) {
+   css.innerHTML = code;
+ };
+ 
+-var styles = {};
++var _styles = {}
++var styles = _styles;
+ var style;
+ var stack = [];
+ 
+ var styled = function styled(elem) {
+   var curr = stack.pop() || [];
+-  styles = curr[0] || styles;
++  styles = Object.keys(curr[0]).length ? curr[0] :  styles;
+   style = curr[1] || style;
+   styled[KEYS.__styles__] = styles;
+   styled[KEYS.__style__] = style;

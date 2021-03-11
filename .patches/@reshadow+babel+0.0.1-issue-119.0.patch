@@ -1,5 +1,5 @@
 diff --git a/node_modules/@reshadow/babel/index.js b/node_modules/@reshadow/babel/index.js
-index c849cca..4f0ddb8 100644
+index c849cca..41524c6 100644
 --- a/node_modules/@reshadow/babel/index.js
 +++ b/node_modules/@reshadow/babel/index.js
 @@ -76,7 +76,7 @@ const getIsInsideComment = (isInsideComment, lastString) => {
@@ -30,7 +30,7 @@ index c849cca..4f0ddb8 100644
 -    moduleName = '@reshadow/vue';
 +  if (options.target.startsWith('vue')) {
 +    moduleName = '@reshadow/'.concat(options.target);
-+    KEYS.__classProp__ = require(moduleName).KEYS.__classProp__;
++    Object.assign(KEYS, require(moduleName).KEYS);
 +    parentJsxSyntax = require(moduleName.concat('/utils')).jsxVuePlugin
    }
 +  const classProp = options.classProp || KEYS.__classProp__;
@@ -84,7 +84,32 @@ index c849cca..4f0ddb8 100644
      const getIndex = createCSSVarIndexer();
  
      if (options.stringStyle) {
-@@ -351,10 +355,13 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -321,15 +325,23 @@ module.exports = (babel, pluginOptions = {}) => {
+ 
+     let depth = 0;
+     const elementMap = new Map();
++    const staticClassElements = new Set();
+     const roots = new Set();
+     p.traverse(_objectSpread({}, visitor, {
++      ArrowFunctionExpression(elementPath) {
++        const {
++          node
++        } = elementPath;
++      },
+       JSXElement(elementPath) {
+         const {
+           node
+         } = elementPath;
+         if (isReactFragment(node) || cache.has(node)) return;
++        if (t.isArrowFunctionExpression(node)) {
++          console.log({node });
++        }
+         cache.add(node);
+-
+         if (variables && depth === 0) {
+           for (const x of elementPath.container) {
+             if (!t.isJSXElement(x)) continue;
+@@ -351,10 +363,13 @@ module.exports = (babel, pluginOptions = {}) => {
  
          if (elementName.startsWith('use:')) {
            elementName = elementName.replace('use:', 'use--');
@@ -101,16 +126,11 @@ index c849cca..4f0ddb8 100644
            }
          } else if (!/[^A-Z]\w+/.test(elementName)) {
            isElement = false;
-@@ -392,11 +399,14 @@ module.exports = (babel, pluginOptions = {}) => {
-               }
+@@ -393,10 +408,9 @@ module.exports = (babel, pluginOptions = {}) => {
  
                return;
--            }
-+            }/* else if (attr.argument === 'use') {
-+              indexesToRemove.push(i);
-+              useAttr = attr;
-+            }*/
- 
+             }
+-
              if (isElement && t.isJSXIdentifier(attr.name) && attr.name.name === 'as') {
                indexesToRemove.push(i);
 -              openingElement.name.name = attr.value.value;
@@ -118,7 +138,7 @@ index c849cca..4f0ddb8 100644
              } else if (t.isJSXNamespacedName(attr.name) && attr.name.namespace.name === 'use') {
                indexesToRemove.push(i);
                const name = attr.name.name.name;
-@@ -419,27 +429,33 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -419,27 +433,38 @@ module.exports = (babel, pluginOptions = {}) => {
            if (useAttr || uses.length > 0) {
              if (!useAttr) {
                const USE = addImport('use');
@@ -136,27 +156,34 @@ index c849cca..4f0ddb8 100644
                openingElement.attributes.splice(i, 1);
              });
  
++            if (useAttr) {
++              openingElement.attributes.push(useAttr);
++            }
++
              if (__style__) {
 -              openingElement.attributes.push(t.jSXAttribute(t.JSXIdentifier(KEYS.__style__), t.JSXExpressionContainer(__style__)));
 +              openingElement.attributes.push(t.jsxAttribute(t.jsxIdentifier(KEYS.__style__), t.jsxExpressionContainer(__style__)));
              }
  
-             if (useAttr) {
-               openingElement.attributes.push(useAttr);
-+              return
+-            if (useAttr) {
+-              openingElement.attributes.push(useAttr);
++            if (spreads.length === 0) {
++              staticClassElements.add(elementName)
++
++              openingElement.attributes = [t.jsxAttribute(t.jsxIdentifier(classProp), t.jsxExpressionContainer(buildClassName({
++                NAME: name,
++                ELEMENT: t.stringLiteral(`__${elementName}`)
++              })))];
++
              }
++            openingElement.attributes.push(...filtered);
  
 -            return;
-+            filtered.push(
-+              ...spreads.map((attr) => {
-+                return t.JSXSpreadAttribute(attr)
-+              })
-+            );
-+            spreads.length = 0;
++            return
            }
          }
  
-@@ -452,15 +468,15 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -452,15 +477,15 @@ module.exports = (babel, pluginOptions = {}) => {
              }
            }
  
@@ -171,11 +198,11 @@ index c849cca..4f0ddb8 100644
  
            if (__style__) {
 -            openingElement.attributes.push(t.jSXAttribute(t.JSXIdentifier('style'), t.JSXExpressionContainer(__style__)));
-+            openingElement.attributes.push(t.jsxAttribute(t.jsxIdentifier('style'), t.jsxExpressionContainer(__style__)));
++            openingElement.attributes.push(t.jsxAttribute(t.jsxIdentifier(KEYS.__style__), t.jsxExpressionContainer(__style__)));
            }
          }
  
-@@ -476,33 +492,40 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -476,33 +501,44 @@ module.exports = (babel, pluginOptions = {}) => {
       * Think about more effective transformations
       */
  
@@ -205,10 +232,9 @@ index c849cca..4f0ddb8 100644
 +          const { node } = expressionPath
  
 -          if (!(t.isIdentifier(node.callee) && node.callee.name === 'h')) {
--            return;
-+          if (t.isIdentifier(node.callee)
-+            && identifiersWhichRender.includes(node.callee.name) === false) {
-+            return
++          if (!node.callee.name
++            || t.isIdentifier(node.callee) && identifiersWhichRender.includes(node.callee.name) === false) {
+             return;
            }
  
 -          const {
@@ -217,21 +243,25 @@ index c849cca..4f0ddb8 100644
 -          node.arguments[1] = t.callExpression(t.identifier(addImport('map')), [t.stringLiteral(elementName), node.arguments[1]]);
 -        }
 +          const { elementName } = elems.shift()
++          if (staticClassElements.has(elementName)) {
++            return
++          }
  
 -      });
-+          node.arguments[1] = t.callExpression(t.identifier(addImport('map')), [
-+            t.stringLiteral(elementName),
-+            node.arguments[1],
-+          ])
++          node.arguments[1] = t.callExpression(
++            t.identifier(addImport('map')), [
++              t.stringLiteral(elementName),
++              node.arguments[1],
++            ]);
 +        },
 +      })
-+        }
      }
 -  };
++  }
  
    const traverseTaggedTemplate = p => {
      const {
-@@ -621,13 +644,16 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -621,13 +657,16 @@ module.exports = (babel, pluginOptions = {}) => {
      }
  
    };
@@ -249,7 +279,7 @@ index c849cca..4f0ddb8 100644
            // babel 6 compatibility
            Object.assign(options, state.opts);
  
-@@ -650,13 +676,20 @@ module.exports = (babel, pluginOptions = {}) => {
+@@ -650,13 +689,20 @@ module.exports = (babel, pluginOptions = {}) => {
            specifiers
          } = p.node;
  
