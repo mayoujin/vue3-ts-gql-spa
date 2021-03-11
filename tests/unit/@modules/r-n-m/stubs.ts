@@ -1,5 +1,5 @@
 import { ApolloQueryResult } from '@apollo/client/core/types'
-import { CharactersQuery } from 'types/api'
+import { CharactersQuery } from '@/@types/api'
 import { Characters } from '@modules/r-n-m/types/characters'
 import { NetworkStatus } from '@apollo/client/core/networkStatus'
 import { DocumentNode } from 'graphql'
@@ -47,6 +47,5 @@ const charactersListMocked = jest
   .fn<Promise<CharactersQueryResult>, never>()
   .mockResolvedValue(charactersQueryResultMock)
 
-// @ts-ignore
 export const requests = new Map<DocumentNode, typeof charactersListMocked>()
 requests.set(queryCharactersDocument, charactersListMocked)
