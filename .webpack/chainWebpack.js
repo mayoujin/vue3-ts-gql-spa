@@ -1,5 +1,5 @@
 /**
- * @typedef { import("@vue/cli-service/node_modules/webpack-chain") } ChainableWebpackConfig
+ * @typedef { import("webpack-chain") } ChainableWebpackConfig
  * @typedef { function(config: ChainableWebpackConfig): void } ChainWebpackFunction
  * @property {ChainableWebpackConfig} config
  */
@@ -35,6 +35,25 @@ const ruleExposeDefineComponent = (config) => {
       ],
     })
     .end()
+}
+
+/**
+ * @type ChainWebpackFunction
+ */
+const configEnableProductionSourceMap = (config) => {
+  config.devtool('source-map')
+  config.optimization.minimize(false)
+
+  config.plugin('define').tap((definitions) => {
+    definitions[0]['__VUE_PROD_DEVTOOLS__'] = 'true'
+    return definitions
+  })
+}
+/**
+ * @type ChainWebpackFunction
+ */
+const ruleCssExtend = (config) => {
+  config.module.rule('pcss').use('postcss-loader')
 }
 
 /**
@@ -83,11 +102,12 @@ const ruleEslintDisable = (config) => {
  */
 const configChainFnLis = [
   //pluginsDeleteCssNano,
+  //configEnableProductionSourceMap,
+  //ruleExposeDefineComponent,
   pluginsDeleteTsChecker,
-  ruleExposeDefineComponent,
   ruleGqlTagLoader,
   ruleEslintDisable,
-  rulePosthtmlLoader,
+  //rulePosthtmlLoader,
 ]
 
 /**

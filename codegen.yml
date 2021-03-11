@@ -4,7 +4,7 @@ hooks:
   afterAllFileWrite:
     - prettier --write
 generates:
-  ./types/api/index.ts:
+  ./src/@types/api.ts:
     documents: ./src/@modules/**/*.graphql
     plugins:
       - typescript

@@ -1,3 +1,6 @@
+//const tailwindcss = require('tailwindcss')
+//const nested = require('postcss-nested')
+
 module.exports = {
   presets: [
     [
@@ -16,12 +19,14 @@ module.exports = {
     [
       'reshadow/babel',
       {
-        postcss: true,
+        postcss: {
+          plugins: [],
+        },
         target: 'vue3',
-        files: /\.shadow\.p?css$/,
+        files: /\.shadow.*\.p?css$/,
         classProp: 'class',
         filterProp: (prop) => {
-          return ['class', 'id', 'aria', 'for', 'role'].includes(prop)
+          return ['class', 'id', 'aria', 'for', 'role', 'key'].includes(prop)
         },
       },
     ],

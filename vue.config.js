@@ -3,6 +3,7 @@ const { configureWebpack, chainWebpack } = require('./.webpack')
 module.exports = {
   /* build, dev, ci */
   lintOnSave: false,
+  productionSourceMap: false,
   publicPath: process.env.npm_config_publicPath || '/',
   /* webpack */
   configureWebpack,

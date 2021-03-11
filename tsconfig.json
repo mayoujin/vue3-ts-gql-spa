@@ -42,8 +42,8 @@
       "@modules/*": [
         "src/@modules/*"
       ],
-      "types/*": [
-        "types/*"
+      "@types/*": [
+        "src/@types/*"
       ],
       "tests/*": [
         "tests/*"
@@ -52,7 +52,7 @@
   },
   "include": [
     "src/**/*",
-    "types/**/*",
+    "src/@types/**/*",
     "tests/**/*"
   ],
   "plugins": [
@@ -60,7 +60,7 @@
       "name": "typescript-plugin-css-modules",
       "options": {
         "classnameTransform": "dashes",
-        "customMatcher": "\\.m\\.pcss$"
+        "customMatcher": "\\.p?css$"
       }
     }
   ]
