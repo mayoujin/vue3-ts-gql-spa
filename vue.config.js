@@ -1,10 +1,16 @@
 const { configureWebpack, chainWebpack } = require('./.webpack')
+const { isProd, argv } = require('./.webpack/utils')
+
+console.log({
+  publicPath: argv('publicPath'),
+  productionSourceMap: !!argv('sourcemaps'),
+})
 
 module.exports = {
   /* build, dev, ci */
   lintOnSave: false,
-  productionSourceMap: false,
-  publicPath: process.env.npm_config_publicPath || '/',
+  productionSourceMap: !!argv('sourcemaps'),
+  publicPath: argv('publicPath') || '/',
   /* webpack */
   configureWebpack,
   chainWebpack,
@@ -14,7 +20,9 @@ module.exports = {
     loaderOptions: {
       css: {
         modules: {
-          localIdentName: '[local]-[hash:base64:6]',
+          localIdentName: isProd
+            ? '[hash:base64:8]'
+            : '[local]-[hash:base64:6]',
         },
       },
     },

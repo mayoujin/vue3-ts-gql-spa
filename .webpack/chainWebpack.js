@@ -1,3 +1,5 @@
+const { isProd } = require('./utils')
+
 /**
  * @typedef { import("webpack-chain") } ChainableWebpackConfig
  * @typedef { function(config: ChainableWebpackConfig): void } ChainWebpackFunction
@@ -13,27 +15,6 @@ const ruleGqlTagLoader = (config) => {
     .test(/\.(graphql|gql)$/)
     .use('graphql-tag/loader')
     .loader('graphql-tag/loader')
-    .end()
-}
-
-/**
- * @type ChainWebpackFunction
- */
-const ruleExposeDefineComponent = (config) => {
-  config.module
-    .rule('expose-global')
-    .test(require.resolve('vue').replace('/index.js', ''))
-    .use('expose-loader')
-    .loader('expose-loader')
-    .options({
-      exposes: [
-        {
-          globalName: 'defineComponent',
-          moduleLocalName: 'defineComponent',
-          override: true,
-        },
-      ],
-    })
     .end()
 }
 
@@ -90,6 +71,8 @@ const pluginsDeleteCssNano = (config) => {
 }
 
 /**
+ * Disables linting
+ *
  * @type ChainWebpackFunction
  */
 const ruleEslintDisable = (config) => {
@@ -100,22 +83,21 @@ const ruleEslintDisable = (config) => {
  *
  * @type ChainWebpackFunction[]
  */
-const configChainFnLis = [
-  //pluginsDeleteCssNano,
-  //configEnableProductionSourceMap,
-  //ruleExposeDefineComponent,
+const configChainsList = [
   pluginsDeleteTsChecker,
   ruleGqlTagLoader,
   ruleEslintDisable,
+  //pluginsDeleteCssNano,
   //rulePosthtmlLoader,
-]
+  ,
+].concat(isProd() ? [] : configEnableProductionSourceMap)
 
 /**
  *
  * @type ChainWebpackFunction
  */
 const chainWebpack = (config) =>
-  configChainFnLis.forEach((handler) => {
+  configChainsList.forEach((handler) => {
     handler(config)
   })
 
