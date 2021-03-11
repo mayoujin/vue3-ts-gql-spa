@@ -1,4 +1,4 @@
-import { Character as CharacterFull, Location } from '@/types/api'
+import { Character as CharacterFull, Location } from '@/@types/api'
 
 declare enum CharacterPropNamesEnum {
   ID = 'id',
@@ -9,7 +9,7 @@ declare enum CharacterPropNamesEnum {
 }
 
 declare type Character = Required<
-Pick<CharacterFull, CharacterPropNamesEnum>
+  Pick<CharacterFull, CharacterPropNamesEnum>
 > & {
   location: Pick<Location, 'name'>
 }

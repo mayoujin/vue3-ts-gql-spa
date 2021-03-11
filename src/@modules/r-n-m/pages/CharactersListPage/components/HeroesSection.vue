@@ -1,40 +1,47 @@
 <template>
-  <CharactersList :characters="characters"
-                  data-test-component="HeroesSection"
-  >
+  <CharactersList :characters="characters" v-test v-bem>
     <template #actions="{ item }">
-      <AButton :key="item.id"
-               type="link" @click="onRemove(item)"
+      <RemoveButton
+        type="link"
+        @click="onRemove(item)"
+        v-bem:RemoveButton
+        v-test:RemoveButton
       >
-        Remove
-      </AButton>
+        {{ $t('heroes_section.remove_button') }}
+      </RemoveButton>
     </template>
   </CharactersList>
 </template>
 
-<script>
+<script lang="ts">
 import CharactersList from '@modules/r-n-m/components/organisms/CharactersList'
-import { Button as AButton } from '@ui/index'
-
+import { Button } from '@ui'
 import { props } from '@modules/r-n-m/components/organisms/CharactersList/setup'
+
+import { useBem } from '@/plugins/bem'
+import styles from './heroes.module.pcss'
+
+const $bemCn = useBem<string>(styles)
 
 const Emits = {
   REMOVE: 'remove',
 }
 
 const methods = {
-  onRemove (item) {
+  onRemove(item) {
     this.$emit(Emits.REMOVE, item)
   },
 }
 
 export default {
+  name: 'HeroesSection',
   components: {
     CharactersList,
-    AButton,
+    RemoveButton: Button,
   },
   props,
   emits: [Emits.REMOVE],
   methods,
+  $bemCn,
 }
 </script>

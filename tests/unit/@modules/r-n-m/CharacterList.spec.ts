@@ -1,16 +1,23 @@
+import 'tests/unit'
 import { mount, flushPromises } from '@vue/test-utils'
 
 import { createMockClient, provideMockClient } from 'tests/mocks'
 
 import CharactersListPage from '@modules/r-n-m/pages/CharactersListPage'
+import CharactersSection from '@modules/r-n-m/pages/CharactersListPage/components/CharactersSection.vue'
+import HeroesSection from '@modules/r-n-m/pages/CharactersListPage/components/HeroesSection.vue'
+import CharacterListItem from '@modules/r-n-m/components/organisms/CharacterListItem'
 
 import { requests as charactersRequests } from './stubs'
 import { Heroes } from '@modules/r-n-m/types/heroes'
+import { useTest } from '@/plugins/jest'
+
+const { getSelector } = useTest()
 
 const Selectors = {
-  CharactersSection: '[data-test-component="CharactersSection"]',
-  HeroesSection: '[data-test-component="HeroesSection"]',
-  CharacterListItem: '[data-test-component="CharacterListItem"]',
+  CharactersSection: getSelector(CharactersSection),
+  HeroesSection: getSelector(HeroesSection),
+  CharacterListItem: getSelector(CharacterListItem),
 }
 
 describe('CharactersListPage.vue', () => {
@@ -24,6 +31,7 @@ describe('CharactersListPage.vue', () => {
   const createComponent = ({ requests }) => {
     const apolloClient = createMockClient({}, { requests })
     provideMockClient(apolloClient)
+    // @ts-ignore
     wrapper = mount(CharactersListPage)
 
     onCharactersListUpdated = new Promise((resolve) => {
@@ -33,16 +41,18 @@ describe('CharactersListPage.vue', () => {
     })
   }
 
-  it('should be rendered Characters and Heroes sections', () => {
-    createComponent({ requests: charactersRequests })
+  createComponent({ requests: charactersRequests })
 
-    charactersComponent = wrapper.find(Selectors.CharactersSection)
+  it('should be rendered Characters and Heroes sections', () => {
     expect(wrapper.exists()).toBeTruthy()
+    charactersComponent = wrapper.find(Selectors.CharactersSection)
     heroesComponent = wrapper.get(Selectors.HeroesSection)
 
     expect(charactersComponent.exists()).toBeTruthy()
     expect(heroesComponent.exists()).toBeTruthy()
-    expect(charactersComponent.find('.ant-empty').exists()).toBeTruthy()
+    expect(
+      charactersComponent.find('.ant-spin-nested-loading').exists(),
+    ).toBeTruthy()
     expect(heroesComponent.find('.ant-empty').exists()).toBeTruthy()
   })
 
@@ -70,7 +80,7 @@ describe('CharactersListPage.vue', () => {
   })
 
   it('should not add the same Character to Favourite Heroes', async () => {
-    await charactersListItems[0].find('button').trigger('click')
+    await charactersListItems[0].find(getSelector('AddButton')).trigger('click')
     await flushPromises()
     expect(heroesComponent.findAll(Selectors.CharacterListItem)).toHaveLength(1)
   })
@@ -81,7 +91,7 @@ describe('CharactersListPage.vue', () => {
         resolve({ heroes })
       })
     })
-    await heroesListItems[0].find('button').trigger('click')
+    await heroesListItems[0].find(getSelector('RemoveButton')).trigger('click')
     await flushPromises()
     const { heroes } = await heroesUpdated
     expect(heroesComponent.findAll(Selectors.CharacterListItem)).toHaveLength(

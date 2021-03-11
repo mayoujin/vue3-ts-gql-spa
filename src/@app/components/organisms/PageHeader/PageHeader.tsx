@@ -1,19 +1,19 @@
+import { defineComponent } from 'vue'
+import styled from 'reshadow'
 /**
  * Global UI
  */
 import { PageHeader } from '@ui'
+
+import styles from './styles.shadow.pcss'
 
 export interface ComponentProps {
   title: string
   'sub-title': string
 }
 
-const Component: SetupFunction<ComponentProps, JSX.Element> = ({
-  title,
-  'sub-title': subtitle,
-}) => {
-  // @ts-ignore
-  return <PageHeader title={title} sub-title={subtitle} />
+const Component = ({ title, 'sub-title': subtitle }) => {
+  return () => styled(styles)(<PageHeader title={title} sub-title={subtitle} />)
 }
 
-export default Component
+export default defineComponent<ComponentProps>(Component)

@@ -1,5 +1,5 @@
 <template>
-  <AListItem data-test-component="CharacterListItem">
+  <AListItem v-test>
     <AListItemMeta :description="`${species}, ${location.name}`">
       <template #title>
         <span>{{ name }}</span>
@@ -18,12 +18,11 @@
 /**
  * Global, Api Types
  */
-import { PropType } from 'vue'
-import { ComponentPropsOptions } from 'vue'
+import { defineComponent } from 'vue'
 /**
  * Global UI
  */
-import { List, Avatar as AAvatar } from '@ui/index'
+import { List, Avatar } from '@ui'
 /**
  * Local types
  */
@@ -40,13 +39,13 @@ export const props: ComponentPropsOptions<Character> = {
   type: String,
 }
 
-export default {
+export default defineComponent({
   name: 'CharacterListItem',
   components: {
     AListItem: List.Item,
     AListItemMeta: List.Item.Meta,
-    AAvatar,
+    AAvatar: Avatar,
   },
   props,
-}
+})
 </script>

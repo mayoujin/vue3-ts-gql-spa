@@ -14,5 +14,3 @@ export interface RawBindings {
   [ComponentPropsEnum.CHARACTERS]: Characters
   [ComponentPropsEnum.IS_LOADING]: boolean
 }
-
-export type VueComponentProps = Readonly<ComponentProps>

@@ -1,5 +1,9 @@
 <template>
-  <AList item-layout="horizontal" :data-source="characters">
+  <AList
+    item-layout="horizontal"
+    :data-source="characters"
+    :loading="isLoading"
+  >
     <template #renderItem="{ item }">
       <ListItem v-bind="item">
         <template #actions>
@@ -11,26 +15,23 @@
 </template>
 
 <script lang="ts">
-import { List as AList } from '@ui'
+import { defineComponent } from 'vue'
 
-import { RawBindings, ComponentProps } from './types'
+import { List as AList } from '@/@ui'
+
 import { setup, props } from './setup'
-
-import ListItem from '../../organisms/CharacterListItem'
-// @ts-ignore
-import $style from './styles.module.pcss'
+import ListItem from '@modules/r-n-m/components/organisms/CharacterListItem'
 
 /**
  * Template bindings Type check Declaration with check
  */
 
-export default {
+export default defineComponent({
+  setup,
   components: {
     ListItem,
     AList,
   },
   props,
-  setup,
-  $style,
-}
+})
 </script>

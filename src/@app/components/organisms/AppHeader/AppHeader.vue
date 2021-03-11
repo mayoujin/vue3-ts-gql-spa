@@ -7,13 +7,23 @@
       <div :class="cn('center-slot')">
         <slot />
       </div>
-      <div :class="cn('end-slot')" />
+      <div :class="cn('end-slot')">
+        <slot name="end" />
+      </div>
     </div>
   </header>
 </template>
 
-<script>
-export default {}
-</script>
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { useBem } from '@/plugins/bem'
 
-<style src="./styles.module.pcss" lang="postcss" module></style>
+import styles from './styles.module.pcss'
+const cn = useBem<string>(styles)
+
+export default defineComponent({
+  setup: () => ({
+    cn,
+  }),
+})
+</script>

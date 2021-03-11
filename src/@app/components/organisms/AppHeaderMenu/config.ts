@@ -12,22 +12,22 @@ interface MenuItemParams {
 }
 
 export const MenuItemsList = [
-/*
+  /*
   {
     title: 'About',
     route: COMMON_ROUTES.ABOUT,
-  },
-*/
-  {
-    title: 'Home',
-    route: COMMON_ROUTES.HOME,
   },
   {
     title: 'Reshadow Test',
     route: COMMON_ROUTES.TEST,
   },
+  */
   {
-    title: 'Rick&Morty',
+    title: 'Home',
+    route: COMMON_ROUTES.HOME,
+  },
+  {
+    title: 'Rick & Morty',
     route: RNM_ROUTES.ROOT_ROUTE,
   },
 ]
