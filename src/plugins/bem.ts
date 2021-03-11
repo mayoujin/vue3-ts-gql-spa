@@ -28,7 +28,11 @@ export const useBemPropBindings = <T extends string>(
   ...[cssModule, name]: Parameters<typeof block>
 ) => {
   const cn: CnFunction<T, string> = block(cssModule, name)
-  const cnFn = (element, mods, states): { class: ReturnType<typeof cn> } => ({
+  const cnFn: CnFunction<T, { class: ReturnType<typeof cn> }> = (
+    element,
+    mods,
+    states,
+  ) => ({
     class: cn(element, mods, states),
   })
   return cnFn
