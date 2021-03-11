@@ -1,2 +1,0 @@
-(self["webpackChunkvue3_ts_gql_spa"]=self["webpackChunkvue3_ts_gql_spa"]||[]).push([[138],{263:function(e,u,t){"use strict";t.r(u);var l=t(21840),n=t(36512);u["default"]=function(){return(0,l.createVNode)(n.RouterView,null,null)}}}]);
-//# sourceMappingURL=RootLayout.42badb67.js.map
