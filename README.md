@@ -18,12 +18,11 @@
 ### Tests
 - [Cypress](https://www.cypress.io/) – E2E tests
 - [Jest](http://jestjs.io/) + [Vue Test Utils](https://github.com/vuejs/vue-test-utils-next) + [Vue Jest](https://github.com/vuejs/vue-jest/tree/v3) – Unit Tests
-- [Storybook](https://storybook.js.org/)
 
 ### Styles
 - :bar_chart: [PostCSS](https://postcss.org/)
 - :triangular_ruler: [Tailwindcss](https://tailwindcss.com/) – CSS utility Framework
-- :bar_chart: [BEM Css Modules](https://postcss.org/), [Reshadow](https://reshadow.dev/) – Isolated Css-Moules based styles management
+- :bar_chart: [BEM Css Modules](https://postcss.org/), [Reshadow](https://reshadow.dev/) – Isolated Css-Moules-based styles management
 
 ## Project Core Folder Structure
 ```bash
@@ -49,7 +48,7 @@
 │   │       ├── composable
 │   │       ├── pages
 │   │       ├── services    # - module services
-│   │       ├── store       # - module local state manager extnnsions
+│   │       ├── store       # - module local state manager extensions
 │   │       |── types       # - module extra types
 │   │       └── index.ts
 │   │       └── routes.ts
@@ -68,8 +67,6 @@
 ├── tests
 │   ├── e2e
 │   └── unit
-
-
 ...
 └── README.md
 ```
@@ -89,10 +86,3 @@ npm serve
 npm build
 ```
 
-### Lints and fixes files
-```
-npm lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

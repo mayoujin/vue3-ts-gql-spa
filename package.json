@@ -12,7 +12,7 @@
     "packages:patch": "npm run packages:patch-reshadow && npx patch-package --patch-dir=.patches",
     "packages:optimize": "npx npm-force-resolutions && npm --force dedupe",
     "packages:minimize": "npx dedupe-npm-install",
-    "packages:patch-reshadow": "mkdir ./node_modules/@reshadow/vue3 && cp ./.patches/vue3/* ./node_modules/@reshadow/vue3",
+    "packages:patch-reshadow": "mkdir ./node_modules/@reshadow/vue3 && cp ./.patches/@reshadow/vue3/* ./node_modules/@reshadow/vue3",
     "postinstall": "npm run packages:patch",
     "prebuild": "npm ci && npm run packages:minimize"
   },
