@@ -1,5 +1,5 @@
+import { provide, ComponentPublicInstance } from 'vue'
 import block from 'bem-css-modules'
-import { inject, provide } from 'vue'
 
 block.setSettings({
   modifierDelimiter: '--',
@@ -7,40 +7,95 @@ block.setSettings({
 
 export const BemCssModuleCn = Symbol('BemCssModuleCn')
 
-/**
- *
- * @param style
- */
-export const useBem = (style) => {
-  return block(style)
+interface ModsType {
+  [key: string]: boolean | string | number | undefined
 }
+interface StatesType {
+  [key: string]: boolean | undefined
+}
+
+type CnFunction<T, ReturnType> = (
+  element?: T,
+  mods?: ModsType | StatesType | null,
+  states?: StatesType | null,
+) => ReturnType
 
 /**
  *
  * @param style
  */
-export const useBemClassnameBindings = (style) => {
-  const cn = block(style)
-  return function (...args) {
-    return {
-      class: cn(...args),
+export const useBemPropBindings = <T extends string>(
+  ...[cssModule, name]: Parameters<typeof block>
+) => {
+  const cn: CnFunction<T, string> = block(cssModule, name)
+  const cnFn = (element, mods, states): { class: ReturnType<typeof cn> } => ({
+    class: cn(element, mods, states),
+  })
+  return cnFn
+}
+
+/**
+ *
+ * @param cssModule
+ * @param name
+ */
+export const useBem = <T extends string>(
+  ...[cssModule, name]: Parameters<typeof block>
+): CnFunction<T, string> => {
+  return block(cssModule, name)
+}
+
+/**
+ *
+ * @param instance
+ */
+const getCnFunction = (instance: ComponentPublicInstance) => {
+  const {
+    $options: { $bemCn },
+  } = instance
+  return $bemCn
+}
+
+/**
+ *
+ */
+export const directive = {
+  beforeMount(el, binding) {
+    const { instance, arg: element, value: dynamicMods } = binding
+
+    const modifiers = dynamicMods
+    const $bemCn = getCnFunction(instance)
+    const bemClassNames = $bemCn(element, modifiers)
+    if (bemClassNames) {
+      el.classList.add(...bemClassNames.split(' '))
     }
-  }
+  },
 }
 
-export default {
-  install: (app, options) => {
-    app.config.globalProperties.$bem = block
+/**
+ *
+ */
+const plugin = {
+  install: (app) => {
     app.provide(BemCssModuleCn, block)
     provide(BemCssModuleCn, block)
 
     app.mixin({
-      beforeCreate () {
-        const $style = this.$style || this.$options.$style
-        if ($style) {
-          this.cn = this.$bem($style)
+      beforeCreate() {
+        const { $options } = this
+        if ($options.$bemCn || $options.$bemModule === undefined) {
+          return
         }
+        $options.$bemCn = useBem($options.$bemModule)
       },
     })
+
+    app.directive('bem', directive)
   },
+}
+
+export default plugin
+
+export const apply = ({ app }) => {
+  app.use(plugin)
 }
