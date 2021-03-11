@@ -1,0 +1,18 @@
+Menu {
+  composes: bg-primary-900 w-full from global;
+}
+
+MenuItem {
+  composes: px-4 from global;
+}
+
+Menu MenuItem[|active] {
+  background-color: var(--color-base-300);
+}
+
+Menu MenuItem[|active] RouterLink {
+  color: var(--color-text-medium);
+}
+
+
+
