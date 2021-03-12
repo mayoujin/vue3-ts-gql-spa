@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useBem } from '@/plugins/bem'
+import { useBem } from '@/tools/bem'
 
 import styles from './styles.module.pcss'
 const cn = useBem<string>(styles)

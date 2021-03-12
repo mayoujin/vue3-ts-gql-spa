@@ -1,6 +1,6 @@
 import { Transition, defineComponent } from 'vue'
 
-import { useBemPropBindings } from '@/plugins/bem'
+import { useBemPropBindings } from '@/tools/bem'
 
 import { Layout } from '@ui'
 import { AppHeader } from '@app/components/organisms'
