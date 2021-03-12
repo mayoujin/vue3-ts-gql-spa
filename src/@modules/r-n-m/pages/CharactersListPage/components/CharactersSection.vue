@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useBem } from '@/plugins/bem'
+import { useBem } from '@/tools/bem'
 
 import CharactersList from '@modules/r-n-m/components/organisms/CharactersList'
 import { Button } from '@ui/index.ts'

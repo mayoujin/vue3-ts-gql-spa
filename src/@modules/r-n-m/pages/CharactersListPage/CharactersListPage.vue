@@ -32,7 +32,7 @@ import { setup, emits } from './setup'
 import CharactersSection from './components/CharactersSection.vue'
 import HeroesSection from './components/HeroesSection.vue'
 
-import { useBem } from '@/plugins/bem'
+import { useBem } from '@/tools/bem'
 import styles from './styles.module.pcss'
 
 export default defineComponent({
