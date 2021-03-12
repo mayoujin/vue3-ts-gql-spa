@@ -5,17 +5,12 @@ module.exports = {
   extends: [
     // https://github.com/standard/eslint-config-standard-with-typescript
     'standard-with-typescript',
-    // unneccessary
-    // 'prettier/@typescript-eslint',
-
     // `plugin:vue/essential` by default, consider switching to `plugin:vue/strongly-recommended`
     //  or `plugin:vue/recommended` for stricter rules.
     // See https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
     '@vue/eslint-config-typescript',
     'plugin:vue/vue3-recommended',
     // '@vue/prettier', includes in '@vue/eslint-config-typescript/recommended',
-    // 'prettier/vue',
-    // 'reshadow/eslint',
   ],
 
   plugins: [
@@ -42,12 +37,16 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/prefer-ts-expect-error': 'off',
+    // See https://github.com/typescript-eslint/typescript-eslint/issues/493
+    '@typescript-eslint/explicit-function-return-type': 'off',
+
     'comma-dangle': ['error', 'always-multiline'],
     // allow console.log during development only
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    /** Custom */
+
+    /* Custom VueJS */
     'vue/component-name-in-template-casing': [
       'error',
       'PascalCase',
@@ -55,12 +54,6 @@ module.exports = {
         registeredComponentsOnly: true,
       },
     ],
-
-    // // See https://github.com/typescript-eslint/typescript-eslint/issues/501
-    // 'prefer-promise-reject-errors': 'off',
-
-    // See https://github.com/typescript-eslint/typescript-eslint/issues/493
-    '@typescript-eslint/explicit-function-return-type': 'off',
 
     'vue/max-attributes-per-line': [
       'error',
@@ -92,24 +85,6 @@ module.exports = {
         ignores: [],
       },
     ],
-    // 'tree-shaking/no-side-effects-in-initialization': 0,
-    // Correct typescript linting until at least 2.0.0 major release
-    // 'reshadow/eslint/as': 2,
-  },
-
-  // overrides: [
-  //   {
-  //     files: ['*.vue'],
-  //     rules: {
-  //       indent: 'off',
-  //     },
-  //   },
-  // ],
-  globals: {
-    defineComponent: true,
-    defineProps: true,
-    defineBindings: true,
-    defineEmits: true,
   },
 
   overrides: [
