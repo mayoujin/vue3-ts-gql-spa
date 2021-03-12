@@ -1,3 +1,7 @@
+/**
+ * I18n plugin create and configure.
+ */
+
 import { LocaleMessages, createI18n, VueMessageType } from 'vue-i18n'
 
 function loadLocaleMessages() {
@@ -18,14 +22,17 @@ function loadLocaleMessages() {
   return messages
 }
 
-const i18n = createI18n({
+/**
+ * Plugin instance create
+ */
+export const i18n = createI18n({
   locale: process.env.VUE_APP_I18N_LOCALE || 'en',
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
   messages: loadLocaleMessages(),
 })
 
-export default i18n
-
 export const apply = ({ app }) => {
   app.use(i18n)
 }
+
+export default i18n

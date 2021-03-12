@@ -1,3 +1,6 @@
+/**
+ * Jest directive to mark components parts to use in jest tests
+ */
 export const TestPlugin = Symbol('TestPlugin')
 
 const TEST_ATTR = 'data-test'
@@ -15,14 +18,10 @@ const getSelector = (identifierObject) => {
     return `[${TEST_ATTR}="${identifierObject.name}"]`
   }
 
-  return `[${TEST_ATTR}="${identifierObject}"]`
+  return null
 }
 
-/**
- *
- * @param component
- */
-export const useTest = (component?: any) => {
+export const useTest = () => {
   return {
     getSelector,
   }
