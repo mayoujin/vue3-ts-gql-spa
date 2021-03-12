@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
-import ROOT_ROUTE from '@modules/r-n-m/components/layouts/routes'
+import ROOT_ROUTE from '@modules/r-n-m/layouts/routes'
 import CHARACTERS_LIST_ROUTE from '@modules/r-n-m/pages/CharactersListPage/routes'
 
 export const ROUTES = {
