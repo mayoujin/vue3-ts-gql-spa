@@ -7,7 +7,7 @@ import { ComponentPropsOptions } from 'vue'
 /**
  * Global JS Libs, Vue Utils, Helpers, Plugins
  */
-import { toRefs, ToRefs } from 'vue'
+import { toRefs } from 'vue'
 
 /**
  * Local types, resources
@@ -28,7 +28,7 @@ export const props: ComponentPropsOptions<ComponentProps> = {
  * @param props
  * @param context
  */
-export const setup: SetupFunction<ComponentProps, ToRefs<RawBindings>> = (
+export const setup: SetupFunction<ComponentProps, RawBindings> = (
   props,
   context,
 ) => {
@@ -39,8 +39,15 @@ export const setup: SetupFunction<ComponentProps, ToRefs<RawBindings>> = (
     emit('action', action, args)
   }
 
+  const pagination = {
+    onChange: (page: number) => {
+      emit('page-changed', page)
+    },
+  }
+
   return {
     onAction,
+    pagination,
     characters,
     isLoading,
   }

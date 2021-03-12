@@ -5,7 +5,7 @@
     :loading="isLoading"
   >
     <template #renderItem="{ item }">
-      <ListItem v-bind="item">
+      <ListItem v-bind="item" :key="item.id">
         <template #actions>
           <slot name="actions" :item="item" />
         </template>

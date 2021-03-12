@@ -1,8 +1,15 @@
 @b CharactersLisPage {
+  composes: flex gap-16 from global;
   @e heroes-title {
-    composes: text-xl font-semibold mb-2 from global;
+    composes: text-2xl font-semibold mb-4 from global;
+  }
+  @e characters-container {
+    composes: w-6/12 from global;
+  }
+  @e heroes-container {
+    composes: w-6/12 from global;
   }
   @e characters-title {
-    composes: text-xl font-semibold mb-2 from global;
+    composes: text-2xl font-semibold mb-4 from global;
   }
 }

@@ -1,4 +1,5 @@
 import { Characters } from '@modules/r-n-m/types/characters'
+import { Ref } from 'vue'
 
 export enum ComponentPropsEnum {
   CHARACTERS = 'characters',
@@ -11,6 +12,9 @@ export interface ComponentProps {
 }
 
 export interface RawBindings {
-  [ComponentPropsEnum.CHARACTERS]: Characters
-  [ComponentPropsEnum.IS_LOADING]: boolean
+  [ComponentPropsEnum.CHARACTERS]: Ref<Characters>
+  [ComponentPropsEnum.IS_LOADING]: Ref<boolean>
+  pagination: {
+    onChange: (...args: any[]) => any
+  }
 }

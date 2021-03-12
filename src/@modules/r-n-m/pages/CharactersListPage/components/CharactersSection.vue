@@ -1,5 +1,11 @@
 <template>
-  <CharactersList :characters="characters" :isLoading="isLoading" v-bem v-test>
+  <CharactersList
+    :characters="characters"
+    :isLoading="isLoading"
+    @page-changed="onPageChanged"
+    v-bem
+    v-test
+  >
     <template #actions="{ item }">
       <AddButton
         :key="item.id"
@@ -29,10 +35,12 @@ const $bemCn = useBem<string>(styles)
 
 const Emits = {
   ADD: 'add',
+  PAGE_CHANGED: 'page-changed',
 }
 
 const setup: SetupFunction<typeof props> = (props, { emit }) => ({
   onAdd: (item) => emit(Emits.ADD, item),
+  onPageChanged: (page) => emit(Emits.PAGE_CHANGED, page),
 })
 
 export default defineComponent({
@@ -42,7 +50,7 @@ export default defineComponent({
     AddButton: Button,
   },
   props,
-  emits: [Emits.ADD],
+  emits: [Emits.ADD, Emits.PAGE_CHANGED],
   setup,
   $bemCn,
 })
