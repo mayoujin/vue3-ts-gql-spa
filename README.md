@@ -16,7 +16,6 @@
 - Code Linting: [TS StandardX](https://standardjs.com/)
 
 ### Tests
-- [Cypress](https://www.cypress.io/) – E2E tests
 - [Jest](http://jestjs.io/) + [Vue Test Utils](https://github.com/vuejs/vue-test-utils-next) + [Vue Jest](https://github.com/vuejs/vue-jest/tree/v3) – Unit Tests
 
 ### Styles
@@ -27,16 +26,20 @@
 ## Project Core Folder Structure
 ```bash
 .
+├── .github                 # – github workflows
 ├── .webpack                # – webpack config overrides and extensions
-│   └── ...
+├── .jest                   # – jest config overrides and extensions
+├── dist                    # – app build catalog
+├── public
 ├── src
 │   ├── .boot               # - vue app instance, plugins configure and boot scripts
 │   ├── @app                # - app core components and logic folder
 │   │   ├── components      # - app components
-│   │   │    ├── menus
 │   │   │    ├── layouts
-│   │   │    └── routes.ts   # – app basic routes config
-|   |   └── pages
+│   │   │    └── organisms
+│   │   ├── App.vue         # - base app component
+│   │   └── routes.ts       # – app basic routes config
+│   │
 │   ├── @modules            # – modules folder
 │   │   ├── common          # – common app pages and widgets folder (About, Home, Contacts etc.)
 │   │   │    ├── components
@@ -44,29 +47,36 @@
 │   │   │    └── routes.ts  # – common routes config
 │   │   └── r-n-m
 │   │       ├── api
-│   │       ├── components
-│   │       ├── composable
+│   │       ├── components  # - module components
+│   │       ├── composable  # - module composables
 │   │       ├── pages
 │   │       ├── services    # - module services
 │   │       ├── store       # - module local state manager extensions
 │   │       |── types       # - module extra types
 │   │       └── index.ts
 │   │       └── routes.ts
+│   │── @types              # - common / global types
 │   ├── @ui                 # – common reusable ui in atomic design (atoms, molecules, organisms)
 │   ├── api                 # – api client logic
-│   ├── css                 # – global / common css styles
-│   ├── composable
-│   ├── plugins             # - vue plugins
+│   ├── composable          # – global / common css styles
 │   ├── router              # - vue router
 │   ├── store               # - local state manager
-│   ├── services            # - local state manager
-│   ├── tools
-│   ├── utils
+│   ├── services            # - common services
+│   ├── css                 # – global / common css styles
 │   ├── i18n                # - i18n files
+│   ├── plugins             # - vue plugins
+│   ├── tools               # - common tools
+│   ├── utils               # - common utils
 │   └── types               # - common / global types
+│
 ├── tests
 │   ├── e2e
 │   └── unit
+...
+├── codegen.yml             # - graphql codegen config
+├── tailwind.config.js
+├── tsconfig.config.js
+├── vue.config.js
 ...
 └── README.md
 ```
