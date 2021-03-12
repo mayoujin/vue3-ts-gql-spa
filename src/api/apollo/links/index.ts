@@ -1,21 +1,4 @@
-/* Apollo options configuration */
-import { ApolloLink, from as fromArray } from '@apollo/client'
-
-// import authLink from './auth'
+import { from as fromArray } from '@apollo/client'
 import httpLink from './http'
-// import mutationLink from './watched-mutation'
 
-const links: ApolloLink[] = [httpLink]
-
-/**
- *
- * @param {ApolloLink} link
- */
-export const connectLink = (link: ApolloLink) => {
-  links.unshift(link)
-}
-
-export default fromArray([
-  // authLink,
-  httpLink,
-])
+export default fromArray([httpLink])
