@@ -20,7 +20,7 @@ module.exports = {
     loaderOptions: {
       css: {
         modules: {
-          localIdentName: isProd
+          localIdentName: isProd()
             ? '[hash:base64:8]'
             : '[local]-[hash:base64:6]',
         },

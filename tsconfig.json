@@ -36,6 +36,9 @@
       "@api/*": [
         "src/api/*"
       ],
+      "@api": [
+        "src/api/index.ts"
+      ],
       "@app/*": [
         "src/@app/*"
       ],
@@ -56,12 +59,5 @@
     "tests/**/*"
   ],
   "plugins": [
-    {
-      "name": "typescript-plugin-css-modules",
-      "options": {
-        "classnameTransform": "dashes",
-        "customMatcher": "\\.p?css$"
-      }
-    }
   ]
 }
