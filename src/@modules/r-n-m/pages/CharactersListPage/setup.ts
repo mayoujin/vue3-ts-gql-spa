@@ -16,8 +16,13 @@ export const setup: SetupFunction<{}, RawBindings> = (
   context,
 ): RawBindings => {
   useEmitMetadata(metadata, context)
+
   const { fetchItems: fetchCharacters } = useCharacters()
-  const { characters, isLoading } = fetchCharacters()
+  const { characters, isLoading, page } = fetchCharacters()
+
+  const onPageChanged = (pageNum: number) => {
+    page.value = pageNum
+  }
 
   const {
     fetchItems: fetchHeroes,
@@ -32,5 +37,6 @@ export const setup: SetupFunction<{}, RawBindings> = (
     heroes,
     onAdd: addHero,
     onRemove: removeHero,
+    onPageChanged,
   }
 }

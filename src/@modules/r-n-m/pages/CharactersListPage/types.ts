@@ -12,7 +12,6 @@ export interface RawBindings {
   characters: ReadonlyRefArrayOfAnyOrTypeOf<Characters>
   isLoading: Ref<boolean>
   heroes: ReadonlyRefArrayOfAnyOrTypeOf<Heroes>
-  page: Ref<number>
   onAdd: ActionHandler
   onRemove: ActionHandler
   onPageChanged: (pageNum: number) => void
