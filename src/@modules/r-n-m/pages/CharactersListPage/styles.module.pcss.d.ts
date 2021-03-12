@@ -5,6 +5,5 @@ declare const styles: {
   readonly "CharactersLisPage__heroes-container": string;
   readonly "CharactersLisPage__heroes-title": string;
 };
-export default styles
-export type Styles = typeof styles
+export = styles;
 

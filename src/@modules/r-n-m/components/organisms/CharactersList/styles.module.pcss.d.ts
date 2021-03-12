@@ -5,6 +5,5 @@ declare const styles: {
   readonly "header__start": string;
   readonly "header__wrapper": string;
 };
-export default styles
-export type Styles = typeof styles
+export = styles;
 

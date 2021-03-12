@@ -4,6 +4,5 @@ declare const styles: {
   readonly "Layout__Footer": string;
   readonly "Layout__NavMenu": string;
 };
-export default styles
-export type Styles = typeof styles
+export = styles;
 

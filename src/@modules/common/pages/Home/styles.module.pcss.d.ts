@@ -17,6 +17,5 @@ declare const styles: {
   readonly "top__title": string;
   readonly "top__wrapper": string;
 };
-export default styles
-export type Styles = typeof styles
+export = styles;
 
