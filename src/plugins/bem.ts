@@ -7,6 +7,14 @@ block.setSettings({
 
 export const BemCssModuleCn = Symbol('BemCssModuleCn')
 
+type CssModuleType =
+  | {
+      [key: string]: string
+    }
+  | {
+      readonly [key: string]: string
+    }
+
 interface ModsType {
   [key: string]: boolean | string | number | undefined
 }
@@ -44,8 +52,9 @@ export const useBemPropBindings = <T extends string>(
  * @param name
  */
 export const useBem = <T extends string>(
-  ...[cssModule, name]: Parameters<typeof block>
-): CnFunction<T, string> => {
+  cssModule: CssModuleType,
+  name?: T,
+): CnFunction<string, string> => {
   return block(cssModule, name)
 }
 
@@ -66,7 +75,6 @@ const getCnFunction = (instance: ComponentPublicInstance) => {
 export const directive = {
   beforeMount(el, binding) {
     const { instance, arg: element, value: dynamicMods } = binding
-
     const modifiers = dynamicMods
     const $bemCn = getCnFunction(instance)
     const bemClassNames = $bemCn(element, modifiers)

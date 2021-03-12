@@ -1,4 +1,5 @@
 const { isProd } = require('./utils')
+const { TypedCssModulesPlugin } = require('typed-css-modules-webpack-plugin')
 
 /**
  * @typedef { import("webpack-chain") } ChainableWebpackConfig
@@ -52,7 +53,34 @@ const rulePosthtmlLoader = (config) => {
 /**
  * @type ChainWebpackFunction
  */
-const pluginsDeleteTsChecker = (config) => {
+const pluginTypedCssModulesPlugin = (config) => {
+  const postcssBem = require('postcss-bem-fix')
+  const bem = postcssBem({
+    style: 'bem',
+    separators: {
+      modifier: '--',
+    },
+    shortcuts: {
+      component: 'b',
+      descendent: 'e',
+      modifier: 'm',
+    },
+  })
+
+  config.plugin('typed-css-modules').use(TypedCssModulesPlugin, [
+    {
+      globPattern: 'src/**/*.module.pcss',
+      postCssPlugins: (defaultPlugins) => {
+        return [bem, ...defaultPlugins]
+      },
+    },
+  ])
+}
+
+/**
+ * @type ChainWebpackFunction
+ */
+const pluginDeleteTsChecker = (config) => {
   config.plugins.delete('fork-ts-checker')
 }
 
@@ -62,7 +90,7 @@ const pluginsDeleteTsChecker = (config) => {
  *
  * @type ChainWebpackFunction
  */
-const pluginsDeleteCssNano = (config) => {
+const pluginDeleteCssNano = (config) => {
   ;['css', 'postcss', 'less', 'scss', 'stylus', 'sass'].forEach((fileType) => {
     config.module.rule(fileType).oneOfs.store.forEach((oneOf) => {
       oneOf.uses.store.delete('cssnano')
@@ -84,12 +112,12 @@ const ruleEslintDisable = (config) => {
  * @type ChainWebpackFunction[]
  */
 const configChainsList = [
-  pluginsDeleteTsChecker,
+  pluginDeleteTsChecker,
+  pluginTypedCssModulesPlugin,
   ruleGqlTagLoader,
   ruleEslintDisable,
-  //pluginsDeleteCssNano,
+  //pluginDeleteCssNano,
   //rulePosthtmlLoader,
-  ,
 ].concat(isProd() ? [] : configEnableProductionSourceMap)
 
 /**

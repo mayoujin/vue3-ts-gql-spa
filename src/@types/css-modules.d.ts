@@ -1,4 +1,4 @@
-declare module '*.pcss' {
+declare module '*.module.pcss' {
   const content: Record<string, string>
   export = content
 }
