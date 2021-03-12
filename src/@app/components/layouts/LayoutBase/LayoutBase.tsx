@@ -16,19 +16,7 @@ import styles from './styles.module.pcss'
 
 const { Content, Footer } = Layout
 
-/**
- * Utility const to use in type checking
- */
-const components = {
-  Layout,
-  AppHeader,
-  PageHeader,
-  NavMenu,
-  Content,
-  Footer,
-}
-
-const cn = useBemPropBindings<keyof typeof components>(styles)
+const cn = useBemPropBindings(styles)
 
 /**
  *
