@@ -1,5 +1,4 @@
 import { applyPlugins } from '@/plugins'
-import { ModuleRegisterParams } from '@/index'
 
 export const afterCreated = ({
   app,

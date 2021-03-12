@@ -1,4 +1,3 @@
-import { ModuleRegisterParams } from '@/index'
 import { routes } from './routes'
 
 export const register = ({ router }: ModuleRegisterParams) => {

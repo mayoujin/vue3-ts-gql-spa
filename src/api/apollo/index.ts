@@ -1,7 +1,5 @@
 import { DefaultApolloClient, provideApolloClient } from '@api/index'
 
-import { ModuleRegisterParams } from '@/index'
-
 export { extendTypePolicies } from './cache'
 export { typePolicies } from './cache/typePolicies'
 

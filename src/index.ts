@@ -1,5 +1,5 @@
 import '@/css'
-import { createApp } from '@/@app'
+import { createApp, beforeCreated as appBeforeCreated } from '@/@app'
 import { register as registerModules } from '@/@modules'
 import { afterCreated } from '@/.boot'
 
@@ -8,14 +8,7 @@ import * as store from '@/store'
 import * as apollo from '@/api/apollo'
 import { client as apolloClient } from '@/api/apollo/client'
 
-export interface ModuleRegisterParams {
-  app?: ReturnType<typeof createApp>
-  router?: typeof router
-  store?: typeof store
-  apollo?: typeof apollo
-  apolloClient?: typeof apolloClient
-}
-
+appBeforeCreated({ router })
 registerModules({ router, store })
 const app = createApp({ router })
 afterCreated({ apollo, app, apolloClient })
