@@ -71,7 +71,7 @@ import { useEmitMetadata } from '@/tools'
 import { metadata } from './config'
 
 import { defineComponent } from 'vue'
-import { useBem } from '@/plugins/bem'
+import { useBem } from '@/tools/bem'
 
 import styles from './styles.module.pcss'
 import _styles from './styles.module.pcss.d'
