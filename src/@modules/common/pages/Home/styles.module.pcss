@@ -1,20 +1,25 @@
-@b home-page {
+@b root {
   composes: relative flex flex-col-reverse py-16 from global;
   @apply lg:py-0 lg:flex-col;
 
   @e top {
-    composes: w-full max-w-xl px-4 mx-auto from global;
-    @apply md:px-0 lg:px-8 lg:py-20 lg:max-w-screen-xl;
-  }
-
-  @e top-wrapper {
-    composes: mb-0 from global;
-    @apply lg:max-w-lg lg:pr-8 xl:pr-6;
+    composes: w-full max-w-xl mx-auto from global;
+    @apply lg:max-w-screen-xl;
   }
 
   @e bottom {
-    composes: inset-y-0 top-0 right-0 w-full max-w-xl px-4 mx-auto mb-6 from global;
-    @apply md:px-0 lg:pl-8 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-1/2 lg:max-w-full lg:absolute xl:px-0;
+    composes: inset-y-0 top-0 right-0 w-full max-w-xl  mx-auto mb-6 from global;
+    @apply lg:mb-0 lg:mx-0 lg:w-1/2 lg:max-w-full lg:absolute ;
+  }
+}
+
+@b top {
+  composes: px-4 from global;
+  @apply md:px-0 lg:px-8 lg:py-20;
+
+  @e wrapper {
+    composes: mb-0 from global;
+    @apply lg:max-w-lg lg:pr-8 xl:pr-6;
   }
 
   @e title {
@@ -36,35 +41,38 @@
     @apply md:mb-16 lg:mb-20;
   }
 
-  @e social-links {
-    composes: flex flex-col items-center from global;
+  @e more-link {
+    composes: inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md from global;
+    @apply bg-primary-800 md:w-auto focus:outline-none hover:bg-primary-400 hover:text-primary-100;
   }
+}
 
-  @e links-wrapper {
+@b social-links {
+  composes: flex flex-col items-center from global;
+  @e list {
     composes: space-x-4 flex items-center from global;
   }
-
-  @e link-wrapper {
+  @e follow {
+    composes: mb-2 text-sm text-gray-600 from global;
+    @apply md:mb-2;
+  }
+  @e item {
     composes: flex items-center from global;
   }
+  @e link {
+    composes: text-gray-600 transition-colors duration-300 from global;
+    @apply hover:text-primary-400;
+  }
+}
+
+
+@b bottom {
+  composes: px-4 from global;
+  @apply md:px-0 lg:pl-8 lg:pr-0 xl:px-0;
 
   @e img {
     composes: object-cover w-full h-56 rounded shadow-lg from global;
     @apply lg:rounded-none lg:shadow-none md:h-96 lg:h-full;
   }
-
-  @e link {
-    composes: text-gray-600 transition-colors duration-300 from global;
-    @apply hover:text-primary-400;
-  }
-
-  @e more-link {
-    composes: inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md from global;
-    @apply bg-primary-800 md:w-auto focus:outline-none hover:bg-primary-400 hover:text-primary-100;
-  }
-
-  @e social-links-follow {
-    composes: mb-2 text-sm text-gray-600 from global;
-    @apply md:mb-2;
-  }
 }
+
