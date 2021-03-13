@@ -1,11 +1,13 @@
 <template>
-  <CharactersList :characters="characters" v-test v-bem>
+  <CharactersList v-test
+                  v-bem :characters="characters"
+  >
     <template #actions="{ item }">
       <RemoveButton
-        type="link"
-        @click="onRemove(item)"
         v-bem:RemoveButton
         v-test:RemoveButton
+        type="link"
+        @click="onRemove(item)"
       >
         {{ $t('heroes_section.remove_button') }}
       </RemoveButton>
@@ -28,7 +30,7 @@ const Emits = {
 }
 
 const methods = {
-  onRemove(item) {
+  onRemove (item) {
     this.$emit(Emits.REMOVE, item)
   },
 }

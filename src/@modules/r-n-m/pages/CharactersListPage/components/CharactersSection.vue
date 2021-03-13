@@ -1,18 +1,18 @@
 <template>
   <CharactersList
-    :characters="characters"
-    :isLoading="isLoading"
-    @page-changed="onPageChanged"
     v-bem
     v-test
+    :characters="characters"
+    :is-loading="isLoading"
+    @page-changed="onPageChanged"
   >
     <template #actions="{ item }">
       <AddButton
         :key="item.id"
-        type="link"
-        @click="onAdd(item)"
         v-bem:AddButton
         v-test:AddButton
+        type="link"
+        @click="onAdd(item)"
       >
         {{ $t('characters_section.add_button') }}
       </AddButton>

@@ -27,11 +27,11 @@ import ListItem from '@modules/r-n-m/components/organisms/CharacterListItem'
  */
 
 export default defineComponent({
-  setup,
   components: {
     ListItem,
     AList,
   },
   props,
+  setup,
 })
 </script>
