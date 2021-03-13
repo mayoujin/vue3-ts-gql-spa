@@ -1,3 +1,6 @@
+/**
+ * Jest config extensions, to main jest config readability.
+ */
 const { pathsToModuleNameMapper } = require('ts-jest/utils')
 const {
   compilerOptions: { paths },

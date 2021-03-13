@@ -1,3 +1,6 @@
+/**
+ * Vue plugin installers provider point.
+ */
 import { apply as applyAntDesignVue } from './ant-ui'
 import { apply as applyBemCssModules } from './bem'
 import { apply as applyTestPlugin } from './jest'

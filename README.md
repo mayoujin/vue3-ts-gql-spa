@@ -1,6 +1,6 @@
 # VueJS 3 SPA code sample project
 
-## Used Technologies
+## Core tools and technologies
 
 ### Core
 - [VueJS 3](https://v3.vuejs.org/) with [JSX templates](https://www.npmjs.com/package/@vue/babel-plugin-jsx)
@@ -23,7 +23,34 @@
 - :triangular_ruler: [Tailwindcss](https://tailwindcss.com/) – CSS utility Framework
 - :bar_chart: [BEM Css Modules](https://postcss.org/), [Reshadow](https://reshadow.dev/) – Isolated Css-Moules-based styles management
 
-## Project Core Folder Structure
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm start
+```
+
+### Compiles and minifies for production
+```
+npm build
+```
+
+## Live App
+[App](https://mayoujin.github.io/vue3-ts-gql-spa/)
+
+## Scalable module-based folder structure
+
+Project files structure may seems over-structured and complicated
+for a goal of sample code, however it is scalable enough.
+
+Primary Vuejs 3 components code samples located
+[App Common](https://github.com/mayoujin/vue3-ts-gql-spa/tree/master/src/%40app/components/organisms)
+[Common Module](https://github.com/mayoujin/vue3-ts-gql-spa/tree/master/src/%40modules/common)
+[Rick-And-Mort Module](https://github.com/mayoujin/vue3-ts-gql-spa/tree/master/src/%40modules/r-n-m)
+
 ```bash
 .
 ├── .github                 # – github workflows
@@ -41,7 +68,7 @@
 │   │   └── routes.ts       # – app basic routes config
 │   │
 │   ├── @modules            # – modules folder
-│   │   ├── common          # – common app pages and widgets folder (About, Home, Contacts etc.)
+│   │   ├── common          # – common App pages About, Home, Contacts, Login, Features etc.
 │   │   │    ├── components
 │   │   │    |── pages
 │   │   │    └── routes.ts  # – common routes config
@@ -79,20 +106,5 @@
 ├── vue.config.js
 ...
 └── README.md
-```
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm serve
-```
-
-### Compiles and minifies for production
-```
-npm build
 ```
 

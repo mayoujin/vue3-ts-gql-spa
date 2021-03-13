@@ -1,19 +1,16 @@
 const { configureWebpack, chainWebpack } = require('./.webpack')
 const { isProd, argv } = require('./.webpack/utils')
 
-console.log({
-  publicPath: argv('publicPath'),
-  productionSourceMap: !!argv('sourcemaps'),
-})
-
 module.exports = {
-  /* build, dev, ci */
+  /* build, dev, ci params */
   lintOnSave: false,
   productionSourceMap: !!argv('sourcemaps'),
   publicPath: argv('publicPath') || '/',
-  /* webpack */
+
+  /* Webpack config manipulation */
   configureWebpack,
   chainWebpack,
+
   /* CSS */
   css: {
     requireModuleExtension: true,
@@ -28,6 +25,7 @@ module.exports = {
     },
     extract: true,
   },
+
   /* Plugins */
   pluginOptions: {
     /* I18n */

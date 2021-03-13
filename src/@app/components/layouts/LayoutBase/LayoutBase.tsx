@@ -44,7 +44,7 @@ const Component: SetupFunction<{}, RenderFunction> = (_, context) => {
           }}
         />
       </Content>
-      <Footer {...cn('Footer')}>Footer</Footer>
+      <Footer {...cn('Footer')}></Footer>
     </Layout>
   )
 }

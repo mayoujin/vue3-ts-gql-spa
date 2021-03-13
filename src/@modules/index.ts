@@ -1,3 +1,6 @@
+/**
+ *
+ */
 import { register as registerCommon } from './common'
 import { register as registerRnM } from './r-n-m'
 

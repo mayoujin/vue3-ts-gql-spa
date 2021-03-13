@@ -5,7 +5,7 @@ Content {
   composes: px-4 from global;
 }
 Footer {
-  composes: bg-primary-400 from global;
+  composes: bg-primary-900 from global;
 }
 NavMenu {
   composes: bg-primary-900 from global;
