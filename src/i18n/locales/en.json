@@ -2,5 +2,6 @@
   "characters_section.add_button": "Add",
   "heroes_section.remove_button": "Remove",
   "characters_list_page.heroes_header.text": "Favourite Heroes",
-  "characters_list_page.characters_header.text": "Characters"
+  "characters_list_page.characters_header.text": "Characters",
+  "home.lean_more_link.text": "Learn More"
 }
