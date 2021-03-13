@@ -1,4 +1,4 @@
-import { computed, ComputedRef, ref, Ref } from 'vue'
+import { computed, ref, Ref } from 'vue'
 import { useQuery, useResult } from '@api'
 import { CharactersQuery, QueryCharactersArgs } from '@/@types/api'
 import queryCharactersDocument from './queries/CharactersList.query.graphql'

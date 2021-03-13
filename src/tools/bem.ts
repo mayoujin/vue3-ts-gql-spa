@@ -8,11 +8,11 @@ bem.setSettings({
 
 type CssModuleType =
   | {
-      [key: string]: string
-    }
+    [key: string]: string
+  }
   | {
-      readonly [key: string]: string
-    }
+    readonly [key: string]: string
+  }
 
 interface ModsType {
   [key: string]: boolean | string | number | undefined

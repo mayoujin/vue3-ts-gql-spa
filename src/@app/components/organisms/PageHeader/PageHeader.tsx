@@ -7,7 +7,7 @@ import { PageHeader } from '@ui'
 
 import styles from './styles.shadow.pcss'
 
-export type ComponentProps = {
+export interface ComponentProps {
   title: string
   'sub-title': string
 }

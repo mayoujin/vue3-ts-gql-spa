@@ -1,7 +1,7 @@
 import { RouteRecordRaw } from 'vue-router'
 
-const CharactersList = () =>
-  import(/* webpackChunkName: "CharactersList"  */ '.')
+const CharactersList = async () =>
+  await import(/* webpackChunkName: "CharactersList"  */ '.')
 
 export const CHARACTERS_LIST_ROUTE: RouteRecordRaw = {
   path: 'characters-list',

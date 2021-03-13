@@ -4,7 +4,7 @@
 
 import { LocaleMessages, createI18n, VueMessageType } from 'vue-i18n'
 
-function loadLocaleMessages() {
+function loadLocaleMessages () {
   const locales = require.context(
     '@/i18n/locales',
     true,

@@ -31,7 +31,7 @@ export const useTest = () => {
  *
  */
 export const directive = {
-  beforeMount(el, binding) {
+  beforeMount (el, binding) {
     const { instance, arg: name } = binding
 
     const testName = name ?? instance.$options.name
