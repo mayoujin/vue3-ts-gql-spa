@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "importHelpers": true,
+    "allowJs": true,
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress"]
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "baseUrl": "../../",
+  "paths": {
+    "@/*": [
+      "src/*"
+    ],
+    "@ui/*": [
+      "src/@ui/*"
+    ],
+    "@ui": [
+      "src/@ui/index.ts"
+    ],
+    "@api/*": [
+      "src/api/*"
+    ],
+    "@api": [
+      "src/api/index.ts"
+    ],
+    "@app/*": [
+      "src/@app/*"
+    ],
+    "@modules/*": [
+      "src/@modules/*"
+    ],
+    "@types/*": [
+      "src/@types/*"
+    ],
+    "tests/*": [
+      "tests/*"
+    ]
+  }
+}

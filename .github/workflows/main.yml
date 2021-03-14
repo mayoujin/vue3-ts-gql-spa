@@ -18,9 +18,12 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm run build --publicPath=/vue3-ts-gql-spa/
-      - name: Unit Test🔎
+      - name: Unit Tests🔎
         run: |
           npm run test:unit
+      - name: E2E Tests🔎
+        run: |
+          npm run test:e2e
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:

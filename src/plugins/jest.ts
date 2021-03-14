@@ -31,10 +31,10 @@ export const useTest = () => {
  *
  */
 export const directive = {
-  beforeMount (el, binding) {
-    const { instance, arg: name } = binding
+  beforeMount(el, binding) {
+    const { instance, arg: name, value } = binding
 
-    const testName = name ?? instance.$options.name
+    const testName = value ?? name ?? instance.$options.name
 
     el.setAttribute(TEST_ATTR, testName)
   },
