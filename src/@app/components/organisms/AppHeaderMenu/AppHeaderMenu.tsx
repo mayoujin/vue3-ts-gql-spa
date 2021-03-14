@@ -54,6 +54,7 @@ const Component = () => {
         theme="dark"
         mode="horizontal"
         v-model={[selectedKeys.value, 'selectedKeys']}
+        v-test={['AppHeaderMenu']}
       >
         {MenuItemsList.map(({ title, route }) => (
           <MenuItem

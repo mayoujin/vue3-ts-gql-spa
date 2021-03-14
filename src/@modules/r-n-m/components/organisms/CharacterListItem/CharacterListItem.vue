@@ -1,5 +1,5 @@
 <template>
-  <AListItem v-test>
+  <AListItem v-test :data-character-id="id">
     <AListItemMeta :description="`${species}, ${location.name}`">
       <template #title>
         <span>{{ name }}</span>

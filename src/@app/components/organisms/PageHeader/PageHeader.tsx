@@ -13,7 +13,10 @@ export interface ComponentProps {
 }
 
 const Component = ({ title, 'sub-title': subtitle }) => {
-  return () => styled(styles)(<PageHeader title={title} sub-title={subtitle} />)
+  return () =>
+    styled(styles)(
+      <PageHeader title={title} sub-title={subtitle} v-test={['PageHeader']} />,
+    )
 }
 
 export default defineComponent<ComponentProps>(Component)

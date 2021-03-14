@@ -1,5 +1,5 @@
 <template>
-  <div v-bem>
+  <div v-bem v-test>
     <div v-bem:characters-container>
       <h1 v-bem:characters-title>
         {{ $t('characters_list_page.characters_header.text') }}
@@ -36,6 +36,7 @@ import { useBem } from '@/tools/bem'
 import styles from './styles.module.pcss'
 
 export default defineComponent({
+  name: 'CharactersListPage',
   components: {
     CharactersSection,
     HeroesSection,
