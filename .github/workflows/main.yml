@@ -22,8 +22,7 @@ jobs:
         run: |
           npm run test:unit
       - name: E2E Tests🔎
-        run: |
-          npm run test:e2e
+        uses: cypress-io/github-action@v2
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
