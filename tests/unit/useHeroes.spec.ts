@@ -3,7 +3,7 @@ import { createMockClient, provideMockClient } from 'tests/mocks'
 
 import { useHeroes } from '@modules/r-n-m/composable/useHeroes'
 import { heroes } from '@modules/r-n-m/store/heroes'
-import { Hero, Heroes } from '@modules/r-n-m/types/heroes'
+import { Hero, Heroes } from '@modules/r-n-m/entities/heroes'
 
 import { charactersListMock } from './stubs'
 
