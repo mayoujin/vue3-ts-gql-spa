@@ -6,6 +6,12 @@ import { register as registerRnM } from './r-n-m'
 
 const modules = [registerCommon, registerRnM]
 
-export const register = ({ app, router, store }: ModuleRegisterParams) => {
-  modules.forEach((register) => register({ app, router, store }))
+/**
+ *
+ * @param app
+ * @param router
+ * @param store
+ */
+export const register = ({ app, addRoute, store }: ModuleRegisterParams) => {
+  modules.forEach((register) => register({ app, addRoute, store }))
 }

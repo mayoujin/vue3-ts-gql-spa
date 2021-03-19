@@ -49,8 +49,8 @@ const plugin = {
   },
 }
 
-export const apply = ({ app }) => {
-  app.use(plugin)
+export const apply = ({ install }) => {
+  install(plugin)
 }
 
 export default plugin

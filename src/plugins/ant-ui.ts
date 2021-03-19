@@ -1,6 +1,6 @@
 import plugin from 'ant-design-vue/lib'
 import 'ant-design-vue/dist/antd.css'
 
-export const apply = (app) => {
-  app.use(plugin)
+export const apply = ({ install }) => {
+  install(plugin)
 }

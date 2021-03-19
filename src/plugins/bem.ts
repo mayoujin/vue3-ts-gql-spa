@@ -21,7 +21,7 @@ const getCnFunction = (instance: ComponentPublicInstance) => {
  *
  */
 export const directive = {
-  beforeMount (el, binding) {
+  beforeMount(el, binding) {
     const { instance, arg: element, value: dynamicMods } = binding
     const modifiers = dynamicMods
     const $bemCn = getCnFunction(instance)
@@ -56,6 +56,6 @@ const plugin = {
 
 export default plugin
 
-export const apply = ({ app }) => {
-  app.use(plugin)
+export const apply = ({ install }) => {
+  install(plugin)
 }

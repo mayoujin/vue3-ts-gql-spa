@@ -1,7 +1,7 @@
 /**
  *
  */
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, Router } from 'vue-router'
 import { routes } from '@/routes'
 
 const router = createRouter({
@@ -9,4 +9,13 @@ const router = createRouter({
   routes,
 })
 
+export const addRoute: Router['addRoute'] = (...args) => {
+  // @ts-ignore
+  return router.addRoute(...args)
+}
+
 export default router
+
+export const apply = ({ install }) => {
+  install(router)
+}

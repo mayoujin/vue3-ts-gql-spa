@@ -3,11 +3,12 @@
  */
 import { ApolloClient } from '@apollo/client'
 
-import cache from './cache'
+import { createCache } from './cache'
 import link from './links'
 
-export const client = new ApolloClient({
-  link,
-  cache,
-  connectToDevTools: true,
-})
+export const createApolloClient = () =>
+  new ApolloClient({
+    link,
+    cache: createCache(),
+    connectToDevTools: true,
+  })

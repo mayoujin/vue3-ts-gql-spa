@@ -1,7 +1,11 @@
 import { ReactiveVar } from '@apollo/client/cache/inmemory/reactiveVars'
 import { makeVar, TypePolicies } from '@apollo/client'
-import { typePolicies } from '@/api/apollo'
 
+/**
+ *
+ * @param extendTypePolicies
+ * @param initialValue
+ */
 export const useStoreVariable = <T>({
   extendTypePolicies,
   initialValue,
@@ -13,7 +17,8 @@ export const useStoreVariable = <T>({
   initialValue: T
 }) => {
   const variable = makeVar<T>(initialValue)
-  extendTypePolicies(typePolicies, variable)
+  const _extendTypePolicies = (typePolicies) =>
+    extendTypePolicies(typePolicies, variable)
 
-  return variable
+  return { variable, extendTypePolicies: _extendTypePolicies }
 }
