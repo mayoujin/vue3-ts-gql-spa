@@ -1,6 +1,6 @@
 import { ApolloQueryResult } from '@apollo/client/core/types'
 import { CharactersQuery } from '@/@types/api'
-import { Characters } from '@modules/r-n-m/types/characters'
+import { Characters } from '@modules/r-n-m/entities/characters'
 import { NetworkStatus } from '@apollo/client/core/networkStatus'
 import { DocumentNode } from 'graphql'
 import CharactersListQuery from '@modules/r-n-m/api/operations/queries/CharactersList.query.graphql'
