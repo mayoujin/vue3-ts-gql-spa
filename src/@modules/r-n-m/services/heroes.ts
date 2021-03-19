@@ -1,7 +1,7 @@
 import { Ref } from 'vue'
 
-import { Heroes, Hero } from '@modules/r-n-m/types/heroes'
-import { Character } from '@modules/r-n-m/types/characters'
+import { Heroes, Hero } from '@modules/r-n-m/entities/heroes'
+import { Character } from '@modules/r-n-m/entities/characters'
 
 import { heroes as heroesVar } from '@modules/r-n-m/store/heroes'
 import { useQuery, useResult } from '@api/index'
