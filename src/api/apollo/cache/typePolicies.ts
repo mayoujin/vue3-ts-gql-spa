@@ -19,7 +19,7 @@ export const typePolicies = {
  * @param {Function} callback
  * @return void
  */
-export const extendTypePolicies = (
+export const extendSchema = (
   callback: (typePolicies: TypePolicies) => void,
 ) => {
   callback(typePolicies)

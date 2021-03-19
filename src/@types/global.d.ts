@@ -9,8 +9,6 @@ import {
 } from 'vue'
 
 import * as store from '@/store'
-import * as apollo from '@/api/apollo'
-import { client as apolloClient } from '@/api/apollo/client'
 
 declare global {
   type SetupFunction<Props, ReturnType> = (
@@ -25,8 +23,8 @@ declare global {
   export interface ModuleRegisterParams {
     app?: ReturnType<typeof createApp>
     router?: Router
+    addRoute?: Router['addRoute']
     store?: typeof store
-    apollo?: typeof apollo
-    apolloClient?: typeof apolloClient
+    installPlugin?: (plugin: any) => ReturnType<typeof createApp>
   }
 }
