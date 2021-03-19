@@ -9,7 +9,7 @@ import HeroesSection from '@modules/r-n-m/pages/CharactersListPage/components/He
 import CharacterListItem from '@modules/r-n-m/components/organisms/CharacterListItem'
 
 import { requests as charactersRequests } from './stubs'
-import { Heroes } from '@modules/r-n-m/types/heroes'
+import { Heroes } from '@modules/r-n-m/entities/heroes'
 import { useTest } from '@/plugins/jest'
 
 const { getSelector } = useTest()
