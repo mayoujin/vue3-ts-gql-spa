@@ -85,8 +85,7 @@ Primary Vuejs 3 components code samples located
 │   │── @types              # - common / global types
 │   ├── @ui                 # – common reusable ui in atomic design (atoms, molecules, organisms)
 │   ├── api                 # – api client logic
-│   ├── composable          # – global / common css styles
-│   ├── router              # - vue router
+│   ├── composable          # – common composables
 │   ├── store               # - local state manager
 │   ├── services            # - common services
 │   ├── css                 # – global / common css styles
